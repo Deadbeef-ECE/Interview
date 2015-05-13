@@ -8,4 +8,8 @@
 （6）Operating System: 操作系统相关知识点
 
 Update Info:
+M/D/Y
+05/12/2015:
+Finished Linked List part of Leetcode
+
 
