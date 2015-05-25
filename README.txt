@@ -12,4 +12,6 @@ M/D/Y
 05/12/2015:
 Finished Linked List part of Leetcode
 
+05/25/20155:
+Finished String part of Leetcode
 
