@@ -12,6 +12,8 @@ M/D/Y
 05/12/2015:
 Finished Linked List part of Leetcode
 
-05/25/20155:
+05/25/2015:
 Finished String part of Leetcode
 
+05/28/2015:
+Finished SSD Storage of DS&Storage
