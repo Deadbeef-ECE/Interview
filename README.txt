@@ -27,7 +27,7 @@ Add Sortings in Algorithm&DataStructure/Sort
 
 05/31/2015:
 Move the SSD part from numbers to pages and build Storage Folder
-
+Add partial content from paper: Design Tradeoffs for SSD performance
 
 
 
