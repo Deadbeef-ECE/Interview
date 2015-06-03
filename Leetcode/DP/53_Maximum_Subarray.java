@@ -31,7 +31,6 @@ public class Solution {
         int maxSum = Integer.MIN_VALUE;
         return findMaxSub(A, 0, A.length - 1, maxSum);
     }
-     
     // recursive to find max sum 
     // may appear on the left or right part, or across mid(from left to right)
     private int findMaxSub(int[] A, int left, int right, int maxSum) {
@@ -65,6 +64,7 @@ public class Solution {
 
         return maxSum;
     }
+
     // (4) kadane algorithm: O(n) space, O(1) time
     // 注：input的所有元素都是负数的话，此算法无比蛋疼！！！！
     public int maxSubArray4(int[] nums) {
