@@ -16,7 +16,7 @@ public class Solution {
         }
         // 找到在startIndex后面比num[startIndex]大的最小值
         // 从startIndex往后找的话要加入diff变量取最小的
-        // 因为从 startIndex+1＝> n-1 是降序, 因此从后往前找的话不需要引入diff变量
+        // 因为从 startIndex+1＝> n-1 是降序, 因此从后往前找不需要引入diff变量
         int targetIndex = 0;
         if(startIndex >= 0){
             for(int i = num.length -1; i >startIndex; i--){
