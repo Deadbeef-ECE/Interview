@@ -35,5 +35,9 @@ Add URL shortening topic of System Design
 06/03/2015
 Add bounding box for similar questions in Leetcode
 
+06/07/2015
+Add EXT_2.pdf in Storage Folder
 
+06/08/2015
+Finished File System Basics, RAID and PCI express of DS&Storage
 
