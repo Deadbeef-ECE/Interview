@@ -43,3 +43,9 @@ Finished File System Basics, RAID and PCI express of DS&Storage
 
 06/11/2015
 Finished Array of Leetcode
+
+06/11/2015
+Add deadlock in Operating System label
+
+06/12/2015
+Add Company Folder and Bloomberg phone interview
