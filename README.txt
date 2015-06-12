@@ -9,12 +9,10 @@ Root
   |    |- Bloomberg
   |     
   |- Leetcode: java solution(source code) of leetcode
-  |    | - Array
-  |    | - Backtracking
-  |    | - DP
-  |    | - Greedy
-  |    | - Math
-  |    | - String
+  |    |- Array   |- String   |- LinkedList      
+  |    |- Tree    |- Math     |- BitManipulation  
+  |    |- DP      |- Greedy   |- Backtracking
+  |    |- DataStructureDesign |- BinarySearch
   |
   |- Storage: Isolated Storage-related topic
   |    |- SSD: Basics of Solid State Drive
