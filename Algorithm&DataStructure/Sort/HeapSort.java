@@ -9,7 +9,7 @@ public class HeapSort {
 			sink(a, 1, N);
 		}
 	}
-	
+	// 上大下小
 	private static void sink(int[] pq, int root, int N){
 		while(2*root <= N){
 			int j = 2 * root;
