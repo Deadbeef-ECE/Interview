@@ -61,7 +61,7 @@ Add EXT_2.pdf in Storage Folder
 Finished File System Basics, RAID and PCI express of DS&Storage
 
 06/11/2015
-Finished Array of Leetcode
+Finished Array part of Leetcode
 
 06/11/2015
 Add deadlock in Operating System label
@@ -70,7 +70,10 @@ Add deadlock in Operating System label
 Add Company Folder and Bloomberg phone interview
 
 06/15/2015
-Finished Math of Leetcode
+Finished Math part of Leetcode
+
+06/16/2015
+Finished Bit Minipulation part of Leetcode 
 
 
 
