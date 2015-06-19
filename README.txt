@@ -75,5 +75,6 @@ Finished Math part of Leetcode
 06/16/2015
 Finished Bit Minipulation part of Leetcode 
 
-
+06/19/2015
+Finished Data Structure Design of Leetcode
 
