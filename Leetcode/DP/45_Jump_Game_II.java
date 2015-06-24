@@ -20,8 +20,8 @@ public class Solution {
                 return step;
             nextDistance = Math.max(nums[i] + i, nextDistance);
         	if(i == maxDistance){
-            	step++;
-            	maxDistance = nextDistance;
+                step++;
+                maxDistance = nextDistance;
         	}
         }
         return 0;
