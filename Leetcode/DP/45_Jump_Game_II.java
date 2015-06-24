@@ -22,7 +22,7 @@ public class Solution {
             if(i == maxDistance){
                 step++;
                 maxDistance = nextDistance;
-        	}
+            }
         }
         return 0;
     }
