@@ -8,7 +8,7 @@
  * }
  */
 public class Solution {
-	// O(height) space, O(n) time
+	// O(height) space, O(nlogn) time
     public TreeNode invertTree(TreeNode root) {
         if(root == null)
             return root;
