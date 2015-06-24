@@ -16,10 +16,10 @@ public class Solution {
         int nextDistance = nums[0];
         int step = 1;
         for(int i = 1; i <= maxDistance; i++){
-        	if(maxDistance >= nums.length - 1)
+            if(maxDistance >= nums.length - 1)
                 return step;
             nextDistance = Math.max(nums[i] + i, nextDistance);
-        	if(i == maxDistance){
+            if(i == maxDistance){
                 step++;
                 maxDistance = nextDistance;
         	}
