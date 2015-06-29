@@ -1,6 +1,29 @@
 public class Solution {
-	// Brute Force
-	// O(1) space, O(n^2) time
+    // Moore’s Voting Algorithm
+    // O(1) space, O(n) time
+    public int majorityElement3(int[] num) {
+        if(num == null || num.length < 1)
+            return -1;
+        
+        int index = 0;
+        int cnt = 1;
+
+        for(int i = 0; i < num.length; i++){
+            if(num[i] == num[index]){
+                cnt++;
+            }else if(num[i]!= num[index]){
+                cnt--;
+                if(cnt == 0){
+                    cnt = 1;
+                    index = i;
+                }
+            }
+        }
+        return num[index];
+    }
+
+    // Brute Force
+    // O(1) space, O(n^2) time
     public int majorityElement(int[] nums) {
         for(int i = 0; i < nums.length; i++){
         	int cnt = 1;
@@ -15,13 +38,9 @@ public class Solution {
     }
 
     // Sort and return
-	// O(1) space, O(nlogn) time
+    // O(1) space, O(nlogn) time
     public int majorityElement2(int[] nums) {
         Arrays.sort(nums);
         return nums[nums.length/2];
     }
-
-	// Moore’s Voting Algorithm
-	// O(1) space, O(n) time
-    
 }
