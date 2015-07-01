@@ -82,4 +82,4 @@ Finished Data Structure Design of Leetcode
 Add some Lintcode questions
 
 06/30/2015
-Add PocketGems phone interview questions
+Finished BinarySearch of Leetcode 
