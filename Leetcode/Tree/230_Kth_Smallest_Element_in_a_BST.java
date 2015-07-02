@@ -4,7 +4,7 @@ public class Solution {
     // logn is the height of the BST, we need logn time to
     // reach the left most leaf, then O(k) to reach target
     public int kthSmallest(TreeNode root, int k) {
-        if(k <= 0)  return 0;
+        if(root == null || k <= 0)  return 0;
         int[] ret = new int[1];
         int[] start = {0};
         helper(root, start, k, ret);
