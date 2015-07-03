@@ -23,7 +23,7 @@ public class Solution {
         return s.substring(start+1, end);
     }
 
-    // DP: 乱用DP天地灭, 暴力破解保平安
+    // DP: DP乱用天地灭, 暴力破解保平安
     // O(n^2) space, O(n^2) time
     public String longestPalindromeDP(String s) {
         if(s == null || s.length() <= 1)
@@ -35,6 +35,7 @@ public class Solution {
         int max = 0;
         for(int i = len - 1; i >= 0; i--){
             for(int j = i; j < len; j++){
+                //   s[i] == s[j]的前提下           自己或左右相邻  或  内层也是回文  
                 if(s.charAt(i) == s.charAt(j) && (i + 1 > j - 1 || dp[i+1][j-1])){
                     dp[i][j] = true;
                     if(max < j - i + 1){
