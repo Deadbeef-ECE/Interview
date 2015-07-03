@@ -12,14 +12,12 @@ public class Solution {
     }
     
     private void helper(TreeNode root, int[] start, int k, int[] ret){
-        if(start[0] < k){
-            if(root.left != null)
-                helper(root.left, start, k, ret);
+        if(start[0] < k && root != null){
+            helper(root.left, start, k, ret);
             start[0] += 1;
             if(start[0] == k)
                 ret[0] = root.val;
-            if(root.right != null)
-                helper(root.right, start, k, ret);   
+            helper(root.right, start, k, ret);   
         }
     }
 }
