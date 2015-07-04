@@ -17,9 +17,9 @@ public class Solution {
     }
     // Please reference this link if you want add somthing  
     // to pass the shitest test case using the method above
-// https://github.com/DeanWen/leetCodeInterview/blob/master/LeetCode/214-Shortest%20Palindrome.java
+    // https://github.com/DeanWen/leetCodeInterview/blob/master/LeetCode/214-Shortest%20Palindrome.java
 
-    // The similar method with 5.Longest Palindromic Substring
+    // The similar solution of 5.Longest Palindromic Substring
     public String shortestPalindrome2(String s) {
         if (s == null || s.length() <= 1)
             return s;
