@@ -1,4 +1,3 @@
-
 public class Solution {
     // O(n) space, O(n) time
     public List<String> anagrams(String[] strs) {

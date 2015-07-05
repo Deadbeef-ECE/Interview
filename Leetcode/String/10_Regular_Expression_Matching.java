@@ -1,5 +1,5 @@
 public class Solution {
-    // Recursion:
+    // Recursion 解法:
     // O(1) space, polynomial time
     public boolean isMatch(String s, String p) {
         if(p.length() == 0)
@@ -61,7 +61,7 @@ public class Solution {
                 // 一对一匹配原则
                 if(p.charAt(j-1) == '.' || s.charAt(i-1) == p.charAt(j-1))
                     dp[i][j] = dp[i-1][j-1];
-                // p的偶数位置出现了‘*’
+                // p的偶数位置出现了‘*’(偶数位的index是奇数)
                 else if(j > 1 && p.charAt(j-1) == '*')
                     // 情况一:p的*匹配0个前符号, s和p去掉后俩字符(dp[i][j-2])
                     dp[i][j] = dp[i][j-2]|| 

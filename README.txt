@@ -82,4 +82,7 @@ Finished Data Structure Design of Leetcode
 Add some Lintcode questions
 
 06/30/2015
-Finished BinarySearch of Leetcode 
+Finished BinarySearch of Leetcode
+
+07/05/2015
+Finished String Craps of Leetcode
