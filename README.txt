@@ -6,7 +6,7 @@ Root
   |    |- BST
   |   
   |- Company: Interview questions
-  |    |- Bloomberg
+  |    |- Bloomberg  |- PocketGems
   |     
   |- Leetcode: java solution(source code) of leetcode
   |    |- Array   |- String   |- LinkedList      
