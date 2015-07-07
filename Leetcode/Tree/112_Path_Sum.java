@@ -20,7 +20,7 @@ public class Solution {
     // BFS Iteration:
     // O(n) space, n is the maximum TreeNode number from all level
     // O(n) time
-    public boolean hasPathSum(TreeNode root, int sum) {
+    public boolean hasPathSum2(TreeNode root, int sum) {
         if(root == null)    return false;
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         Queue<Integer> cnts = new LinkedList<Integer>();

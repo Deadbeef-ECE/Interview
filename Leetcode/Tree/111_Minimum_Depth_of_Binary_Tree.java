@@ -1,7 +1,7 @@
 public class Solution {
-	// DFS Recursion: 
-	// O(1) space OR O(logn) if consider recursion stack
-	// O(n) time
+    // DFS Recursion:
+    // O(1) space OR O(logn) if consider recursion stack
+    // O(n) time
     public int minDepth(TreeNode root) {
         if(root == null)    return 0;
         if(root.left == null)

@@ -1,7 +1,7 @@
 public class Solution {
-	// DFS Recursion:
-	// O(1) space OR O(logn) space if consider recursion stack
-	// O(n) time
+    // DFS Recursion:
+    // O(1) space OR O(logn) space if consider recursion stack
+    // O(n) time
     public int maxDepth(TreeNode root) {
         if(root == null)    return 0;
         int leftMaxDepth = maxDepth(root.left);
