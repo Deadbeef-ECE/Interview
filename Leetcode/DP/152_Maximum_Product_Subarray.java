@@ -1,5 +1,5 @@
 public class Solution {
-    // DP, 只需要俩常数, O(1) space, O(1) time
+    // DP, 只需要俩常数, O(1) space, O(n) time
     public int maxProduct(int[] A) {
         int dpMax = A[0];
         int dpMin = A[0];

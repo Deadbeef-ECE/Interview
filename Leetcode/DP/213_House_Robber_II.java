@@ -1,5 +1,5 @@
 public class Solution {
-    // 一维DP， O(n) space, O(1) time
+    // 一维DP， O(n) space, O(n) time
     public int rob(int[] nums) {
         if(nums.length < 2)
             return nums.length == 1 ? nums[0]:0;

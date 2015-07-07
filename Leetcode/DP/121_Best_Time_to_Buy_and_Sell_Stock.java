@@ -1,5 +1,5 @@
 public class Solution {
-    // 一维DP: O(n) space, O(1) time
+    // 一维DP: O(n) space, O(n) time
     public int maxProfit(int[] prices) {
         if(prices == null || prices.length <= 1)
             return 0;
@@ -13,7 +13,7 @@ public class Solution {
         return max;
     }
 
-    // 一维DP空间压缩: O(1) space, O(1) time
+    // 一维DP空间压缩: O(1) space, O(n) time
     public int maxProfit2(int[] prices) {
         if(prices == null || prices.length <= 1)
             return 0;

@@ -1,5 +1,5 @@
 public class Solution {
-    // (1) 一维DP, O(n) space, O(1) time
+    // (1) 一维DP, O(n) space, O(n) time
     public int maxSubArray(int[] nums) {
         if(nums == null || nums.length == 0)
             return 0;
@@ -65,7 +65,7 @@ public class Solution {
         return maxSum;
     }
 
-    // (4) kadane algorithm: O(n) space, O(1) time
+    // (4) kadane algorithm: O(1) space, O(n) time
     // 注：input的所有元素都是负数的话，此算法无比蛋疼！！！！
     public int maxSubArray4(int[] nums) {
         if(nums == null || nums.length == 0)
