@@ -1,4 +1,6 @@
 public class Solution {
+    // O(1) space OR O(logn) space if consider recursion stack
+    // O(n) time
     public boolean isBalanced(TreeNode root) {
         if(check(root) == -1)
             return false;
