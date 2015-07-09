@@ -85,4 +85,8 @@ Add some Lintcode questions
 Finished BinarySearch of Leetcode
 
 07/05/2015
-Finished String Craps of Leetcode
+Finished String of Leetcode
+
+07/08/2015
+Finished Tree of Leetcode
+
