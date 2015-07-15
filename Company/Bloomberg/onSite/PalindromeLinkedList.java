@@ -14,23 +14,19 @@ public class PalindromeLinkedList {
             fast = fast.next.next;
         }
         ListNode left = node;
-        ListNode berforereverse = slow;
-        ListNode reverseStart = slow.next;
-        ListNode right = reverse(reverseStart);
-        
-        reverseStart = right;
+        ListNode right = reverse(slow.next);
         boolean result = true;
-        while( left != null && right != null ){
+        ListNode pleft = left;
+        ListNode pright = right;
+        while(pleft != null && pright != null ){
             if(!result)
                 break;
-            if(left.val != right.val ){
-                result = false;
-            }
-            left = left.next;
-            right = right.next;
+            if(left.val != right.val)	result = false;
+            pleft = pleft.next;
+            pright = pright.next;
         }
-        right = reverse(reverseStart);
-        berforereverse.next = right;
+        right = reverse(right);
+        slow.next = right;
 		return result;
 	}
 	
@@ -46,6 +42,7 @@ public class PalindromeLinkedList {
 		}
 		return dummy.next;
 	}
+	
 	public static void main(String[] args){
 		// 1->2->3->3->2->1 
 		ListNode node1 = new ListNode(1);
@@ -59,11 +56,11 @@ public class PalindromeLinkedList {
 		node3.next = node4;
 		node4.next = node5;
 		node5.next = node6;
-		printLinkedList(node1);
+		printLinkedList("before chcek:", node1);
 		System.out.println(isPalindrome(node1));
-		printLinkedList(node1);
-
+		printLinkedList("after check:", node1);
 	}
+	
 	// O(n) space, O(n) time
 	public static boolean isPalindrome2(ListNode node){
 		if(node == null)	return false;
@@ -82,8 +79,9 @@ public class PalindromeLinkedList {
 		}
 		return true;
 	}
-	
-	private static void printLinkedList(ListNode node){
+
+	private static void printLinkedList(String str, ListNode node){
+		System.out.println(str);
 		while(node != null){
 			System.out.print(node.val);
 			if(node.next != null)

@@ -1,11 +1,5 @@
 package onsite;
-class ListNode{
-	int val;
-	ListNode next;
-	public ListNode(int x){
-		val = x;
-	}
-}
+
 public class ReverseLinkedList {
 	public static ListNode reverseLinkedListRec(ListNode node){
 		if(node.next == null)	return node;
