@@ -16,4 +16,18 @@ public class Solution {
         cur.next = l1 == null ? l2 : l1;
         return dummy.next;
     }
+
+    // 简洁版本:
+    public ListNode mergeTwoLists2(ListNode l, ListNode r) {
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
+        while(l != null && r != null){
+            cur.next = l.val < r.val ? l : r;
+            l = cur.next == l ? l.next : l;
+            r = cur.next == r ? r.next : r;
+            cur = cur.next;
+        }
+        cur.next = l == null ? r : l;
+        return dummy.next;
+    }
 }
