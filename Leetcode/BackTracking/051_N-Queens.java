@@ -1,6 +1,6 @@
 public class Solution {
     // O(n) space:
-    // one n for status array, another n if consider recursion stack)
+    // one n for status array, another n if consider recursion stack
     // O(n * n!) time:
     // This is an enumeration problem, so, basically, time complexity is O(n!), 
     // but in each step, we need another O(n) time to check the status array.
