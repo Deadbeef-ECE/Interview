@@ -22,7 +22,13 @@ public class Solution {
     // Finally, we know that T(n)/n! < n, which means T(n) = O(n * n!)
     //
     // Actually we can do much better to shrink the time complexity to
-    // O(c * n!)
+    // O(k * n!):
+    // 数学归纳法, 假设T(n)/n! = k, 那么
+    // T(n+1)/n+1! = n+1/n! + n/n-1! + n-2/n-3! + ... + 1/0!
+    //             = n+1/n! + T(n)/n! = n+1/n! + k
+    // 表面看起来貌似不成立, 但是我们知道当n->无穷大时候, n+1/n! ~ 0, 所以
+    // T(n+1)/n+1! = T(n)/n! = k when n很大的时候
+    // We get T(n) = O(k * n!) time complexity
 
     // Another thing is that this kind of quesion usually run into TLE error
     // rather than SMO(Stack Memeory Overflow) error
