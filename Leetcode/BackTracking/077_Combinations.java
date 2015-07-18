@@ -5,7 +5,7 @@ public class Solution {
     // so, in total, the running time is O(k * c(n,k))
 
     // O(k) space:
-    // one k is the recursion stack, another k is uesed when copying list
+    // one k is the recursion stack, another k is used when copying list
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> ret = new LinkedList<List<Integer>>();
         if(n < k)   return ret;
