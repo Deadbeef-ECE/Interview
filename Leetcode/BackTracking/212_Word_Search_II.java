@@ -3,94 +3,97 @@ public class Solution {
     // O() time
     // O() space
     public List<String> findWords(char[][] board, String[] words) {
-        HashSet<String> set = new HashSet<String>();
         if(board == null || words == null)
             return new LinkedList<String>();
             
-        Trie trie = new Trie(); 
-        for(String word : words){
-            trie.insert(word);
-        }
         int row = board.length;
         int col = board[0].length;
+        // create trie
+        Trie trie = new Trie();
+        for(String word : words)
+            trie.insert(word);
+            
         boolean[][] visited = new boolean[row][col];
+        HashSet<String> set = new HashSet<String>();
         String path = "";
         for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
-                doDFS(board, trie, visited, i, j, path, set);
+                doDFS(i, j, board, path, trie, visited, set);
             }
         }
         return new LinkedList<String>(set);
     }
     
-    private void doDFS(char[][] board, Trie trie, boolean[][] visited, 
-                    int x, int y, String path, HashSet<String> set){
-        if(x < 0 || x >= board.length || y < 0 || y >= board[0].length || visited[x][y] == true)
+    private void doDFS(int i, int j, char[][] board, String path, Trie trie, 
+                    boolean[][] visited, HashSet<String> set){
+        int row = board.length;
+        int col = board[0].length;
+        if(i < 0 || j < 0 || i >= row || j >= col || visited[i][j] == true )
             return;
-        path += board[x][y];
-        if(!trie.startsWith(path))  
+        path += board[i][j];
+        if(!trie.startWith(path))
             return;
         if(trie.search(path))
             set.add(path);
         
-        visited[x][y] = true;
-        doDFS(board, trie, visited, x+1, y, path, set);
-        doDFS(board, trie, visited, x-1, y, path, set);
-        doDFS(board, trie, visited, x, y+1, path, set);
-        doDFS(board, trie, visited, x, y-1, path, set);
-        visited[x][y] = false;
+        visited[i][j] = true;
+        doDFS(i + 1, j, board, path, trie, visited, set);
+        doDFS(i, j + 1, board, path, trie, visited, set);
+        doDFS(i - 1, j, board, path, trie, visited, set);
+        doDFS(i, j - 1, board, path, trie, visited, set);
+        visited[i][j] = false;
     }
 }
-class TrieNode {
-    // Initialize your data structure here.
+
+class TrieNode{
     boolean end;
     TrieNode[] children;
-    public TrieNode() {
+    public TrieNode(){
         this.end = false;
         this.children = new TrieNode[26];
     }
 }
 
-class Trie {
-    private TrieNode root;
-    public Trie() {
+class Trie{
+    TrieNode root;
+    public Trie(){
         root = new TrieNode();
     }
-
-    // Inserts a word into the trie.
-    public void insert(String word) {
-        TrieNode node = root;
+        
+    // Insert a word into the trie.
+    public void insert(String word){
+        TrieNode cur = root;
         for(int i = 0; i < word.length(); i++){
             int index = word.charAt(i) - 'a';
-            if(node.children[index] == null)
-                node.children[index] = new TrieNode();
-            node = node.children[index];
+            if(cur.children[index] == null)
+                cur.children[index] = new TrieNode();
+            cur = cur.children[index];
         }
-        node.end = true;
+        cur.end = true;
     }
-
-    // Returns if the word is in the trie.
-    public boolean search(String word) {
-        TrieNode node = root;
-        for(int i = 0; i < word.length(); i++){
-            int index = word.charAt(i) - 'a';
-            if(node.children[index] == null)
-                return false;
-            node = node.children[index];
-        }
-        return node.end;
-    }
-
-    // Returns if there is any word in the trie
+    
+    // Check if there is any word in the trie
     // that starts with the given prefix.
-    public boolean startsWith(String prefix) {
-        TrieNode node = root;
+    public boolean startWith(String prefix){
+        TrieNode cur = root;
         for(int i = 0; i < prefix.length(); i++){
             int index = prefix.charAt(i) - 'a';
-            if(node.children[index] == null)
+            if(cur.children[index] == null)
                 return false;
-            node = node.children[index];
+            cur = cur.children[index];
         }
         return true;
+    }
+    
+    // Check if the word is in the trie.
+    public boolean search(String word){
+        TrieNode cur = root;
+        for(int i = 0; i < word.length(); i++){
+            int index = word.charAt(i) - 'a';
+            if(cur.children[index] == null)
+                return false;
+            cur = cur.children[index];
+        }
+        return cur.end;
     }
 }
