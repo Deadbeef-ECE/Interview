@@ -10,11 +10,11 @@ public class Solution {
     // O(k * 2^n') time:
     // 此题可以转换成 combination sum II, 如何做呢, 举个栗子:
     // int[] arr = {2, 3, 4, 5, 6}, target = 10; 我们知道此题中,每个元素可以重复用, 
-    // 其实, 如果把 arr 变成 {2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6}, 然后
-    // 每个元素只能用一次, 就变成了combination sum II的要求了. 
+    // 其实, 如果把 arr 变成 {2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6, 6}, 然
+    // 后每个元素只能用一次, 就变成了combination sum II的要求了. 
     // 我们再看新数组, 元素多了很多, 多了多少? 
-    // 那就是数组中所有小于等于target/2的元素E增加了 ceil(target/E)个, 然后
-    // 就可以用combination sum II的方法分析复杂度了. 这里n'是新arr的大小
+    // 那就是数组中所有小于等于target的元素E增加了ceil(target/E)个, 然后就可以用
+    // combination sum II的方法分析复杂度了. 这里n'是新arr的大小
 
     // O(n) space:
     // one n is the recursion stack
