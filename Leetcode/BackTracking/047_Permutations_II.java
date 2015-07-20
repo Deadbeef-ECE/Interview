@@ -1,7 +1,13 @@
 public class Solution {
-    // TODO:
-    // O() time:
-    // O() space:
+    // O(n * n!) time:
+    // 如果是add前去重, 解的个数还是n!
+    // 解的个数: n!, 每个解的长度: n, 故 O(n * n!) running time
+    // 但即便是循环去重, worset case 还是nums无dups, 为O(n * n!)
+
+    // O(n) space:
+    // one n for recursion stack
+    // one n for status bool array
+    // one n for created new linked list 
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> ret = new LinkedList<List<Integer>>();
         if(nums == null || nums.length == 0)
