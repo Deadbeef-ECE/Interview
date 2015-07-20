@@ -10,7 +10,7 @@ public class Solution {
     // 
     // contains()到底花了多少时间?
     // 我们知道list的大小是从1逐渐增加到2^m的, m为去重后解的个数, 那么其实就是
-    // 1 + 2 + 3 + ... + 2^m ~ 2^(m-1) + 2^(m-1)
+    // 1 + 2 + 3 + ... + 2^m ~ 2^(m-1) + 2^(2m-1)
     // 这个时间是由重复元素个数决定的, 但我们可以用hashSet优化, 见subsetsWithDupOp
     // 那么最后running time还是O(n * 2^n)
 
