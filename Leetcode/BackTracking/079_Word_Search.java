@@ -1,4 +1,7 @@
 public class Solution {
+    // TODO: 
+    // O() time
+    // O() space
     public boolean exist(char[][] board, String word) {
         int row = board.length;
         int col = board[0].length;
