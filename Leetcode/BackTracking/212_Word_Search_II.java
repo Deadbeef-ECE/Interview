@@ -1,5 +1,7 @@
 public class Solution {
-    
+    // TODO: 
+    // O() time
+    // O() space
     public List<String> findWords(char[][] board, String[] words) {
         HashSet<String> set = new HashSet<String>();
         if(board == null || words == null)
