@@ -1,7 +1,10 @@
 public class Solution {
-    // TODO: 
-    // O() time
-    // O() space
+    // O(n^m) time:
+    // n is all the possible number in each cell and m is the number of empty cells
+    // The running time of isValid() function is O(1) time since the board is 9*9
+
+    // O(m) space:
+    // The recursion tree has maximum m heigh in which m is the number of empty cells
     public void solveSudoku(char[][] board) {
         if(board.length != 9 || board[0].length != 9)
             return;
@@ -20,7 +23,6 @@ public class Solution {
                             else
                                 board[i][j] = '.';
                         }
-                        
                     }
                     // after tried all possible number, still cannot solve, return false
                     return false; 
