@@ -2,6 +2,7 @@ public class Solution {
     // TODO: 
     // O() time
     // O() space
+    
     public List<List<String>> partition(String s) {
         List<List<String>> ret = new LinkedList<List<String>>();
         if(s == null || s.length() == 0)
