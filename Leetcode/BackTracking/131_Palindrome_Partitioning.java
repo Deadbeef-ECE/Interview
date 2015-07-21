@@ -1,8 +1,35 @@
 public class Solution {
-    // TODO: 
-    // O() time
-    // O() space
-    
+    // O(n * 2^n) time:
+    // isPalindrome O(n) * 解的个数
+    //
+    // 如何得到解的个数:
+    // 举个栗子: s = "aaaa" (worst case)
+    // 解空间树:
+    //                             aaaa
+    //             /                 \         \        \
+    //            a                  aa        aaa     aaaa
+    //       /    |    \            /  \        |
+    //      a     aa   aaa         a   aa       a
+    //     / \    /               /
+    //    a  aa  a               a
+    //   /
+    //  a
+    //          4(个)               2(个)       1(个)   1(个)
+    // 8 in total, 解的个数:2^(n-1)
+    // 
+    // T(n) = T(n) + T(n-1) + T(n-2) + ... + T(1)
+    //      = nT(1) + (n-1)T(1) + ... + T(1) = 2^(n-1)*T(1) = 2^(n-1)
+    // 
+    // 还是前面那个栗子:
+    // T(4) = T(4) +                      T(3) +       T(2) + T(1) 
+    //      = T(3) +        T(2) + T(1) + T(2) + T(1) +T(1) + T(1)
+    //      = T(2) + T(1) + T(1) + T(1) + T(1) + T(1) +T(1) + T(1)
+    //      = T(1) + T(1) + T(1) + T(1) + T(1) + T(1) +T(1) + T(1)
+    //      = 8T(1) = 8
+
+    // O(n) space:
+    // one n is the recursion stack for longest path
+    // another n is used for copy linked list
     public List<List<String>> partition(String s) {
         List<List<String>> ret = new LinkedList<List<String>>();
         if(s == null || s.length() == 0)
