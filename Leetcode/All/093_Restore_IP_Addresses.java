@@ -1,10 +1,13 @@
 public class Solution {
-    // TODO: 
-    // O() time
-    // O() space
+    // O(n^4) time:
+    // n is s.length()
+
+    // O(1) space:
+    // recursion stack 最高也就是4了, 所以O(1) space
     public List<String> restoreIpAddresses(String s) {
         List<String> ret = new LinkedList<String>();
-        if(s.length() > 12) return ret;
+        if(s.length() < 4 || s.length() > 12) 
+            return ret;
         String path = "";
         int seg = 0;
         doDFS(path, s, seg, ret);
