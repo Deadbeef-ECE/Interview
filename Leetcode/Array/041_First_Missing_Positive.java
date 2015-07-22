@@ -3,6 +3,7 @@ public class Solution {
     public int firstMissingPositive(int[] nums) {
         int i = 0, n = nums.length;
         while(i < n){
+            // nums[i] 放i+1 && nums[i] 不越界 && nums[i]应该放在index为nums[i]-1的地方, 若重复, 不交换
             if(nums[i] != i+1 && nums[i] > 0 && nums[i] < n && nums[i] != nums[nums[i]-1]){
                 swap(nums, i, nums[i] - 1);
             }else{
