@@ -96,3 +96,6 @@ Add BB on-site preparation
 07/16/2015
 Finished LinkedList of Leetcode
 
+07/21/2015
+Finished Backtracking of Leetcode
+Finished Greedy of Leetcode
