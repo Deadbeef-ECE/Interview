@@ -1,5 +1,5 @@
 public class Solution {
-    // O(n^2) time, O(n^2) space
+    // O(n^2) space, O(n^2) time
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> ret = new LinkedList<List<Integer>>();
         if(nums == null || nums.length < 4)
