@@ -2,7 +2,7 @@
 // 找出一个 int 的 binary 表示里有多少个 1
 
 public class Q003_NumberOf1Bits {
-	public static int NumberOfOnes(int n){
+    public static int NumberOfOnes(int n){
         int ret = 0;
         while(n != 0){
             ret++;
