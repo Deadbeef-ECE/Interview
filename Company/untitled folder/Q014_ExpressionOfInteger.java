@@ -4,7 +4,7 @@
 //
 // follow up: how to optimize-- 没时间了
 
-public class Q14_ExpressionOfInteger {
+public class Q014_ExpressionOfInteger {
 	// logn solution:
 	public static int minLen(int n){
 		int cnt = 0;

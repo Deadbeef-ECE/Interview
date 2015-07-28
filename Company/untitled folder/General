@@ -1,0 +1,22 @@
+4.
+1) which linux syscall will take a path and return all the inodes: stat
+2) what's the signal for soft kill
+3) how to count the number of ones in many binary numbers if you have unlimited memory
+
+6.
+实现 H index 算法
+
+7.
+关于文本文件读取扫的,几乎没啥算法,和面试官讨论了异常处理,是返回 error code 还是 
+throw exception,讨论了性能优化等等
+
+9.
+输出一堆 photo, photo 有文件名和时间, 输出是一堆 album, 要给每个 album 命名名字, 最多 100 个 photo, 
+然后分的时候, 要做到 user-friendly. 这个面试官是个烙印, 我代码没写完. 大概的思路就是, 按照天数来分, 每个 
+album 的名字就是起止时间. 当然还有很多小细节, 比如一天的照片数可能大于 100.
+
+11.
+定义一个 priority queue 的 interface,假设别人实现代码后,我用啥 test cases 检验。
+
+15.
+生产者消费者问题。

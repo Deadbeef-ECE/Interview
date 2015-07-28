@@ -4,7 +4,7 @@
 // follow up: character 可能有 1 billion 怎么办
 // my follow up: k个相同长度的解
 
-public class Q13_LongestSubstringWithExactTwoDistinctChars {
+public class Q013_LongestSubstringWithExactTwoDistinctChars {
 	// this can be used for k distinct characters within substring
 	public static String find(String str, int k){
 		if(str == null || str.length() == 0)

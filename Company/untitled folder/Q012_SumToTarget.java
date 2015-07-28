@@ -9,7 +9,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class Q12_SumToTarget{
+public class Q012_SumToTarget{
 	// solution:
 	// @author: Lei Wang
 	public static boolean findTarget(int[] arr, int target) {
@@ -39,7 +39,6 @@ public class Q12_SumToTarget{
 	
 	// My follow up 
 	// Return all possible combinations
-	// based on solution 2:
 	public static List<List<Integer>> AllSumToTarget(int[] nums, int target){
 		List<List<Integer>> ret = new LinkedList<List<Integer>> ();
 		if(nums == null || nums.length == 0)

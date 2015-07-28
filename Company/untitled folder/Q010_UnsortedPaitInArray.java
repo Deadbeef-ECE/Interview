@@ -8,7 +8,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class Q10_UnsortedPaitInArray {
+public class Q010_UnsortedPaitInArray {
 	// brute force: O(n^2) time
 	public static List<List<Integer>> BruteFoce(int[] arr){
 		List<List<Integer>> ret = new LinkedList<List<Integer>>();

@@ -5,7 +5,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class Q8_QuestionMarkPermutation {
+public class Q008_QuestionMarkPermutation {
 	// O(n*2^m) time: 
 	// n is the length of input
 	// m is the number of question masks
