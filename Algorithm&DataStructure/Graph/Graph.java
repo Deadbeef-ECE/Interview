@@ -43,7 +43,7 @@ public class Graph {
 	        		String[] tokens = line.split(" ");
 		        	int v = Integer.parseInt(tokens[0]); 
 		        	int w = Integer.parseInt(tokens[1]);
-		        	System.out.println("add edge between v: "+ v +  " w: " + w);
+		        	//System.out.println("add edge between v: "+ v +  " w: " + w);
 		        	addEdge(v, w);
 	        	}
 	        } 
@@ -92,7 +92,7 @@ public class Graph {
 		System.out.println();
 		
 		if(cnt[0] != this.V)
-			System.out.print("This Graph is NOT connected");
+			System.out.println("This Graph is NOT connected");
 		return ret;
 	}
 	
@@ -108,26 +108,40 @@ public class Graph {
 	}
 	
 	// @brief Print path from s to v
-	// @status not yet
+	// @status finished
 	public LinkedList<Integer> HasPath(int s, int v){
 		LinkedList<Integer> ret = new LinkedList<Integer>();
+		LinkedList<Integer> path = new LinkedList<Integer>();
 		boolean[] marked = new boolean[this.V];
-		int[] edgeTo = new int[this.V];
-		dfsPath(v, marked, edgeTo);
-		if(marked[v]){
-			
+		marked[s] = true;
+		dfsPath(s, v, marked, path, ret);
+		if(marked[v] == false){
+			System.out.println("Can not find path from " + s + " to " + v);
+			return ret;
 		}
+		
+		System.out.print("Find path from " + s + " to " + v +"\n"+s +"->");
+		for(int i = 0 ; i < ret.size(); i++){
+			System.out.print(ret.get(i));
+			if(i != ret.size() - 1){
+				System.out.print("->");
+			}
+		}
+		System.out.println();
 		return ret;
 	}
 	
-	private void dfsPath(int v, boolean[] marked, int[] edgeTo){
-		marked[v] = true;
-		for(int w : this.adj[v]){
-			if(!marked[w]){
-				edgeTo[w] = v;
-				dfsPath(w, marked, edgeTo);
+	private void dfsPath(int s, int v, boolean[] marked, LinkedList<Integer> path, LinkedList<Integer> ret){
+		if(s == v){
+			ret.addAll(path);
+			return;
+		}
+		for(int w : this.adj[s]){
+			if(marked[w] == false){
+				marked[w] = true;
+				path.add(w);
+				dfsPath(w, v, marked, path, ret);
 			}
 		}
 	}
-	
 }
