@@ -1,15 +1,18 @@
+// 8. 
+// 给一个 string, 只包含{0,1,?}, ?可以代表 0 或者 1, 输出所有的组合. 
+// e.g.: "10?", 输出"100", "101"
+
 import java.util.LinkedList;
 import java.util.List;
-// 8. 给 string, 只包含{0,1,?}, ?可以代表 0 或者 1, 输出所有的组合. 例如"10?", 输出"100", "101"
 
-// O(n*2^m) time: 
-// n is the length of input
-// m is the number of question masks
-
-// O(n) space: 
-// n is the toString() 
-// m is the recursion stack which can be ignored
-public class QuestionMarkPermutation {
+public class Q8_QuestionMarkPermutation {
+	// O(n*2^m) time: 
+	// n is the length of input
+	// m is the number of question masks
+	// 
+	// O(n) space: 
+	// n is the toString() 
+	// m is the recursion stack which can be ignored
 	public static List<String> PermutationWithQuestionMark(String str){
 		List<String> ret = new LinkedList<String>();
 		if(str == null || str.length() == 0)
@@ -19,6 +22,9 @@ public class QuestionMarkPermutation {
 		dfs(ret, path, str, 0);
 		return ret;
 	}
+	
+	// @author: Lei Wang
+	// This solution is better since only "?" will trigger backtracking
 	private static void dfs(List<String> rst, StringBuilder sb, String str, int pos) {
 		if (pos == str.length()) {
 			rst.add(sb.toString());
@@ -38,6 +44,8 @@ public class QuestionMarkPermutation {
 		}
 	}
 	
+	// @author: Richard
+	// This solution will do backtracking all the time
 	private static void doDFS(int start, String str, StringBuilder path, List<String>ret){
 		if(start == str.length()){
 			ret.add(path.toString());
