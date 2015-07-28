@@ -3,7 +3,7 @@
 
 public class Q003_NumberOf1Bits {
 	public static int NumberOfOnes(int n){
-		int ret = 0;
+        int ret = 0;
         while(n != 0){
             ret++;
             n = n & (n - 1);
