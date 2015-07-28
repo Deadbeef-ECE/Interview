@@ -9,7 +9,7 @@ public class Q003_NumberOf1Bits {
             n = n & (n - 1);
         }
         return ret;
-	}
+    }
 	
 	public static void main(String[] args){
 		test(101);
