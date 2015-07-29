@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class Graph {
 	private int V;
@@ -50,6 +51,20 @@ public class Graph {
 	    } finally { 
 	    	if (br != null) br.close(); // dont throw an NPE because the file wasn't found.
 	    }
+	}
+	
+	// @brief Print adjacent list of graph
+	// @status finished
+	public void printAdjList(){
+		System.out.println("Adjacent List:");
+		for(int i = 0; i < this.V; i++){
+			System.out.print(i + " -> ");
+			for(int j : this.adj[i]){
+				System.out.print(j+" ");
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 	
 	// @brief Return the number of vertices in the graph
@@ -107,30 +122,24 @@ public class Graph {
 		}
 	}
 	
-	// @brief Print path from s to v
+	// @brief Print path from s to v with DFS recursion
 	// @status finished
-	public LinkedList<Integer> HasPath(int s, int v){
+	public LinkedList<Integer> HasPathDFS(int s, int v){
 		LinkedList<Integer> ret = new LinkedList<Integer>();
 		LinkedList<Integer> path = new LinkedList<Integer>();
 		boolean[] marked = new boolean[this.V];
 		marked[s] = true;
 		dfsPath(s, v, marked, path, ret);
 		if(marked[v] == false){
-			System.out.println("Can not find path from " + s + " to " + v);
+			System.out.println("Can not find path from " + s + " to " + v + " !\n");
 			return ret;
 		}
-		
-		System.out.print("Find path from " + s + " to " + v +"\n"+s +"->");
-		for(int i = 0 ; i < ret.size(); i++){
-			System.out.print(ret.get(i));
-			if(i != ret.size() - 1){
-				System.out.print("->");
-			}
-		}
-		System.out.println();
+		printPath(s, v, ret);
 		return ret;
 	}
 	
+	// @brief Helper function for hasPathDFS()
+	// @status finished
 	private void dfsPath(int s, int v, boolean[] marked, LinkedList<Integer> path, LinkedList<Integer> ret){
 		if(s == v){
 			ret.addAll(path);
@@ -143,5 +152,48 @@ public class Graph {
 				dfsPath(w, v, marked, path, ret);
 			}
 		}
+	}
+	
+	// @brief Print path from s to v with BFS iteration
+	// @status finished
+	public LinkedList<Integer> HasPathBFS(int s, int v){
+		LinkedList<Integer> ret = new LinkedList<Integer>();
+		int[] edgeTo = new int[this.V];
+		boolean[] marked = new boolean[this.V];
+		Queue<Integer> queue = new LinkedList<Integer>();
+		queue.add(s);
+		marked[s] = true;
+		while(!queue.isEmpty()){
+			int node = queue.poll();
+			LinkedList<Integer> neighbors = this.adj[node];
+			for(int n : neighbors){
+				if(!marked[n]){
+					edgeTo[node] = n;
+					marked[n] = true;
+					queue.add(n);
+				}
+			}
+		}	
+		if(marked[v] == false){
+			System.out.println("Can not find a path from "+ s +" to " + v+" !\n");
+			return ret;
+		}
+		for(int n = v; n != s; n = edgeTo[n])
+			ret.addFirst(n);
+		printPath(s, v, ret);
+		return ret;
+	}
+	
+	// @brief Helper function used for print path from s to v
+	// @status finished
+	private static void printPath(int s, int v, LinkedList<Integer> ret){
+		System.out.print("Find path from " + s + " to " + v +"\n"+s +"->");
+		for(int i = 0 ; i < ret.size(); i++){
+			System.out.print(ret.get(i));
+			if(i != ret.size() - 1){
+				System.out.print("->");
+			}
+		}
+		System.out.println("\n");
 	}
 }
