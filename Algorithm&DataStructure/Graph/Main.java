@@ -51,6 +51,12 @@ public class Main {
 		Bipartite bipartite2 = new Bipartite(G2);
 		bipartite2.isBipartite();
 		
+		// SymbolGraph:
+		System.out.println("\n********** SymbolGraph Test **********\n");
+		SymbolGraph symbolgraph = new SymbolGraph("bin/routes.txt", " ");
+		symbolgraph.printAdjList();
+		symbolgraph.printList();
+
 		System.out.println("\nend");
 	}
 }
