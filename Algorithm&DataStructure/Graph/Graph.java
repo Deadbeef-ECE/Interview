@@ -85,9 +85,7 @@ public class Graph {
 	
 	// @brief Return all the neighbors of give node v
 	// @status finished
-	public LinkedList<Integer> adj(int v){
-		return adj[v];
-	}
+	public LinkedList<Integer> adj(int v){	return adj[v];	}
 	
 	// @brief Return the (direct && indirect) connected node with s
 	// @status finished
@@ -101,13 +99,14 @@ public class Graph {
 			if(marked[i])
 				ret.add(i);
 		}
-		
+		System.out.println("These node can reach from " + s);
+
 		for(int i : ret)
 			System.out.print(i+" ");
 		System.out.println();
 		
 		if(cnt[0] != this.V)
-			System.out.println("This Graph is NOT connected");
+			System.out.println("This Graph is NOT connected\n");
 		return ret;
 	}
 	
@@ -131,7 +130,7 @@ public class Graph {
 		marked[s] = true;
 		dfsPath(s, v, marked, path, ret);
 		if(marked[v] == false){
-			System.out.println("Can not find path from " + s + " to " + v + " !\n");
+			System.out.println("Can not find path from " + s + " to " + v + "!\n");
 			return ret;
 		}
 		printPath(s, v, ret);
@@ -175,7 +174,7 @@ public class Graph {
 			}
 		}	
 		if(marked[v] == false){
-			System.out.println("Can not find a path from "+ s +" to " + v+" !\n");
+			System.out.println("Can not find a path from "+ s +" to " + v + "!\n");
 			return ret;
 		}
 		for(int n = v; n != s; n = edgeTo[n])
