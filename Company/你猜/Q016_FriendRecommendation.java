@@ -72,7 +72,7 @@ class Network{
 			LinkedList<person> list = this.adj[m];
 			for(person k : list){
 				if(k.val != n && !queue.contains(k)){
-					System.out.println("["+ k.val+"]");
+					//System.out.println("["+ k.val+"]");
 					visited[k.val]++;
 				}
 			}
@@ -82,7 +82,7 @@ class Network{
 		int ret = 0;
 		for(int i = 1; i < this.V; i++){
 			if(visited[i] > max){
-				max = Math.max(max, visited[i]);
+				max = visited[i];
 				ret = i;
 			}
 		}
@@ -106,7 +106,8 @@ public class Q016_FriendRecommendation {
 	public static void main(String[] args) throws IOException{
 		Network network = new Network("bin/016.txt");
 		network.printAdjList();
-		int ret = network.find(0);
-		System.out.println("recommand: "+ ret);
+		int person = 0;
+		int ret = network.find(person);
+		System.out.println("recommand "+ ret + " for " + person);
 	}
 }
