@@ -12,6 +12,8 @@ public class SymbolGraph {
 	private String[] keys;
 	private Graph G;
 	
+	// @brief Constructor of Symbol Grpah with given filename and split ways
+	// @status finished
 	public SymbolGraph(String in, String sp) throws IOException {
 		map = new HashMap<String, Integer>();
 		BufferedReader br = null; 
@@ -46,8 +48,13 @@ public class SymbolGraph {
 	    	if (br2 != null)	br2.close();
 	    }
 	}
-	
+
+	// @brief Print adjacent list of graph
+	// @status finished
 	public void printAdjList(){	G.printAdjList(); }
+	
+	// @brief Print adjacent list with name of graph
+	// @status finished
 	public void printList(){
 		System.out.println("Adjacent List with name:");
 		for(int i = 0; i < G.V(); i++){
@@ -58,21 +65,33 @@ public class SymbolGraph {
 			System.out.println();
 		}
 	}
+
+	// @brief Check if the name is in the symbol graph
+	// @status finished
 	public boolean contains(String str){
 		if(!map.containsKey(str))
 			System.out.println("Cannot find " + str + " in SymbolGraph!");
 		return map.containsKey(str);
 	}
+	
+	// @brief Return the index of name if it is in the symbol graph
+	// @status finished
 	public int index(String str){
 		if(!map.containsKey(str))	return -1;
 		System.out.println(str + "'s index is " + map.get(str) + " in SymbolGraph");
 		return map.get(str);
 	}
+	
+	// @brief Check if the name is in the symbol graph with given index
+	// @status finished
 	public String name(int v){
 		if(v > G.V())		
 			System.out.println("Error : Invalid input");
 		System.out.println(v +" is corresponding with " + keys[v]);
 		return keys[v];
 	}
+	
+	// @brief Return the inner graph in the format of index
+	// @status finished
 	public Graph G(){ return G;}
 }
