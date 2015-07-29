@@ -1,4 +1,6 @@
-// CC = Connected Component 即连通分量
+// @breif: CC Class
+//         CC means Connected Component 即连通分量
+// @reference: Princeton Algorithm book P.349
 
 public class CC {
 	private Graph G;

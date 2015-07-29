@@ -34,7 +34,23 @@ public class Main {
 		cc.isConnected(0, 7);
 		cc.isConnected(7, 10);
 		cc.isConnected(9, 3);
+		
+		// Cycle Detection:
+		System.out.println("********** Cycle Test **********\n");
+		Cycle cycle = new Cycle(G);
+		cycle.hasCycle();
+		
+		// isBipartite:
+		System.out.println("********** Bipartite Test **********\n");
+		Bipartite bipartite = new Bipartite(G);
+		bipartite.isBipartite();
 
-		System.out.println("end");
+		System.out.println("\nCreate new Graph");
+		Graph G2 = new Graph("bin/Bipartite.txt");
+		G2.printAdjList();
+		Bipartite bipartite2 = new Bipartite(G2);
+		bipartite2.isBipartite();
+		
+		System.out.println("\nend");
 	}
 }

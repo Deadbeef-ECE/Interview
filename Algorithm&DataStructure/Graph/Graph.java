@@ -1,3 +1,7 @@
+// @breif: Graph Class
+//         This is Undirected Graph Class
+// @reference: Princeton Algorithm book P.349
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -44,7 +48,7 @@ public class Graph {
 	        		String[] tokens = line.split(" ");
 		        	int v = Integer.parseInt(tokens[0]); 
 		        	int w = Integer.parseInt(tokens[1]);
-		        	//System.out.println("add edge between v: "+ v +  " w: " + w);
+//		        	System.out.println("add edge between v: "+ v +  " w: " + w);
 		        	addEdge(v, w);
 	        	}
 	        } 
