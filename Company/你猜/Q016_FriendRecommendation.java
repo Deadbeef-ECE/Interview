@@ -50,7 +50,6 @@ class Network{
 	    }
 	}
 	
-	public LinkedList<person> getList(int n){	return this.adj[n];	}
 	public int E(){	return this.E;	}
 	public int V(){	return this.V;	}
 	
@@ -63,7 +62,6 @@ class Network{
 	public int find(int n){
 		if(n > this.V)
 			System.out.println("Person not exist!");
-
 		int[] visited = new int[this.V];
 		Queue<Integer> queue = new LinkedList<Integer>();
 		LinkedList<person> neighbor = this.adj[n];
@@ -79,6 +77,7 @@ class Network{
 				}
 			}
 		}
+		
 		int max = visited[0];
 		int ret = 0;
 		for(int i = 1; i < this.V; i++){
