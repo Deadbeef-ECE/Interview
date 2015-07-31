@@ -7,16 +7,18 @@ public class Main {
 		G.search(12);
 		
 		// DFS:
-		System.out.println("********** DFS Test **********\n");
-		G.HasPathDFS(0, 3);
-		G.HasPathDFS(0, 5);
-		G.HasPathDFS(0, 12);
+		System.out.println("********** DFSPath Test **********\n");
+		DFSPath DFSgetPath = new DFSPath(G);
+		DFSgetPath.HasPathDFS(0, 3);
+		DFSgetPath.HasPathDFS(0, 5);
+		DFSgetPath.HasPathDFS(0, 12);
 		
 		// BFS:
-		System.out.println("********** BFS Test **********\n");
-		G.HasPathBFS(0, 3);
-		G.HasPathBFS(0, 5);
-		G.HasPathBFS(0, 12);
+		System.out.println("********** BFSPath Test **********\n");
+		BFSPath BFSgetPath = new BFSPath(G);
+		BFSgetPath.HasPathBFS(0, 3);
+		BFSgetPath.HasPathBFS(0, 5);
+		BFSgetPath.HasPathBFS(0, 12);
 		
 		// Connected Component:
 		System.out.println("********** CC Test **********\n");
