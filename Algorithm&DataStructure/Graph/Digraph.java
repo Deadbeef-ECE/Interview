@@ -44,10 +44,9 @@ public class Digraph {
 	        	}else{
 	        		line = line.trim();
 	        		String[] tokens = line.split(" ");
-	        		System.out.println(tokens[0] +", " + tokens[1]);
 		        	int v = Integer.parseInt(tokens[0]); 
 		        	int w = Integer.parseInt(tokens[1]);
-		        	System.out.println("add edge from v: "+ v +  " to w: " + w);
+		        	//System.out.println("add edge from v: "+ v +  " to w: " + w);
 		        	addEdge(v, w);
 	        	}
 			}

@@ -2,6 +2,8 @@ import java.io.IOException;
 
 public class Main {
 	public static void main(String[] args) throws IOException{
+		/*************** Graph ****************/
+		System.out.println("@@@@@@@@@@ Create a Graph @@@@@@@@@@\n");
 		Graph G = new Graph("bin/tinyG.txt");
 		G.printAdjList();
 		G.search(12);
@@ -43,7 +45,7 @@ public class Main {
 		cycle.hasCycle();
 		
 		// isBipartite:
-		System.out.println("********** Bipartite Test **********\n");
+		System.out.println("\n********** Bipartite Test **********\n");
 		Bipartite bipartite = new Bipartite(G);
 		bipartite.isBipartite();
 
@@ -53,18 +55,19 @@ public class Main {
 		Bipartite bipartite2 = new Bipartite(G2);
 		bipartite2.isBipartite();
 		
-		// SymbolGraph:
-		System.out.println("\n********** SymbolGraph Test **********\n");
+		/*************** SymbolGraph ****************/
+		System.out.println("\n@@@@@@@@@@ Create a SymbolGraph based on Graph @@@@@@@@@@\n");
 		SymbolGraph symbolgraph = new SymbolGraph("bin/routes.txt", " ");
 		symbolgraph.printAdjList();
 		symbolgraph.printList();
 		
-		// Digraph:
+		/*************** Digraph ****************/
+		System.out.println("\n@@@@@@@@@@ Create a Digraph @@@@@@@@@@\n");
 		Digraph digraph = new Digraph("bin/tinyDG.txt");
 		digraph.printAdjList();
 
 		// DigraphDFS:
-		System.out.println("\n********** DigraphDFS Test **********\n");
+		System.out.println("********** DigraphDFS Test **********\n");
 		DigraphDFS digraphDFS = new DigraphDFS(digraph);
 		digraphDFS.search(12);
 		digraphDFS.search(0);
