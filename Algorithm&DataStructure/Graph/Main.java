@@ -58,7 +58,18 @@ public class Main {
 		SymbolGraph symbolgraph = new SymbolGraph("bin/routes.txt", " ");
 		symbolgraph.printAdjList();
 		symbolgraph.printList();
+		
+		// Digraph:
+		Digraph digraph = new Digraph("bin/tinyDG.txt");
+		digraph.printAdjList();
 
+		// DigraphDFS:
+		System.out.println("\n********** DigraphDFS Test **********\n");
+		DigraphDFS digraphDFS = new DigraphDFS(digraph);
+		digraphDFS.search(12);
+		digraphDFS.search(0);
+		digraphDFS.search(6);
+		
 		System.out.println("\nend");
 	}
 }

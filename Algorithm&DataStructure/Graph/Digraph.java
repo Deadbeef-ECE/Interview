@@ -3,7 +3,6 @@
 // @reference: Princeton Algorithm book P.364
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -43,7 +42,9 @@ public class Digraph {
 	        		this.E = Integer.parseInt(line);
 	        		System.out.println("Graph has "+ this.V + " vertices and "+this.E+" edges");
 	        	}else{
+	        		line = line.trim();
 	        		String[] tokens = line.split(" ");
+	        		System.out.println(tokens[0] +", " + tokens[1]);
 		        	int v = Integer.parseInt(tokens[0]); 
 		        	int w = Integer.parseInt(tokens[1]);
 		        	System.out.println("add edge from v: "+ v +  " to w: " + w);
@@ -83,6 +84,10 @@ public class Digraph {
 		adj[v].addFirst(w);
 		E++;
 	}
+	
+	// @brief Return neighbors with given node in Digraph
+	// @status finished
+	public LinkedList<Integer> adj(int v){	return adj[v];	}
 	
 	// @brief Create a new Digraph wich has the opposite direction with the 
 	//        original one
