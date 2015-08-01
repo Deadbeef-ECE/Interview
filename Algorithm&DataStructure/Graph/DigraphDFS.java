@@ -35,9 +35,9 @@ public class DigraphDFS {
 			System.out.print(i+" ");
 		System.out.println();
 		if(cnt[0] != G.V())
-			System.out.println("Not all nodes in digraph can reach from " + s + "\n");
+			System.out.println("Not all nodes in digraph can be reached from " + s + "\n");
 		else
-			System.out.println("All nodes in digraph can reach from " + s + "\n");
+			System.out.println("All nodes in digraph can reached from " + s + "\n");
 		return ret;
 	}
 	

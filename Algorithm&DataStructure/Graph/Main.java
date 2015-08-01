@@ -73,6 +73,11 @@ public class Main {
 		digraphDFS.search(0);
 		digraphDFS.search(6);
 		
+		// DigraphCycle:
+		System.out.println("********** DigraphCycle Test **********\n");
+		DigraphCycle digraphcycle = new DigraphCycle(digraph);
+		digraphcycle.cycle();
+
 		System.out.println("\nend");
 	}
 }
