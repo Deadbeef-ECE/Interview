@@ -77,6 +77,17 @@ public class Main {
 		System.out.println("********** DigraphCycle Test **********\n");
 		DigraphCycle digraphcycle = new DigraphCycle(digraph);
 		digraphcycle.cycle();
+		
+		// DepthFirstOrder:
+		System.out.println("\n@@@@@@@@@@ Create a DAG @@@@@@@@@@\n");
+		System.out.println("********** DepthFirstOrder Test **********\n");
+
+		Digraph DAG = new Digraph("bin/tinyDAG.txt");
+		DAG.printAdjList();
+		DepthFirstOrder depthfirstorder = new DepthFirstOrder(DAG);
+		depthfirstorder.pre();
+		depthfirstorder.post();
+		depthfirstorder.reversePost();
 
 		System.out.println("\nend");
 	}

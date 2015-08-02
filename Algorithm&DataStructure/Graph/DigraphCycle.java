@@ -47,9 +47,17 @@ public class DigraphCycle {
 	// @brief Print and return the first detected cycle in Digraph
 	// @status finished
 	public Stack<Integer> cycle(){
-		while(!cycle.isEmpty()){
-			System.out.print(cycle.pop()+" ");
+		Stack<Integer> cp = new Stack<Integer>();
+		if(!cycle.isEmpty()){
+			for(int num : cycle){
+				cp.push(num);
+			}
 		}
+		
+		while(!cp.isEmpty()){
+			System.out.print(cp.pop()+" ");
+		}
+		System.out.println();
 		return cycle;
 	}
 }
