@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 
-
 public class Digraph {
 	private int V;
 	private int E;
@@ -15,6 +14,7 @@ public class Digraph {
 
 	// @brief Digraph Constructor without input file
 	// @status finished
+	@SuppressWarnings("unchecked")
 	public Digraph(int v){
 		V = v;
 		E = 0;
@@ -25,6 +25,7 @@ public class Digraph {
 	
 	// @brief Digraph Constructor which can load and build graph from .txt file
 	// @status finished
+	@SuppressWarnings("unchecked")
 	public Digraph(String in) throws IOException{
 		BufferedReader br = null; 
 		try{

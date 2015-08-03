@@ -5,6 +5,11 @@
 //             http://blog.csdn.net/dm_vincent/article/details/8554244
 // @Complexity: O(V + E) time
 
+// 2. 伪代码
+//•　　step1：对原图G进行深度优先遍历，记录每个节点的离开时间。
+//•　　step2：选择具有最晚离开时间的顶点，对反图GT进行遍历，删除能够遍历到的顶点，这些顶点构成一个强连通分量。
+//•　　step3：如果还有顶点没有删除，继续step2，否则算法结束。
+
 public class KosarajuSCC {
 	private boolean[] marked;
 	private int[] id;
