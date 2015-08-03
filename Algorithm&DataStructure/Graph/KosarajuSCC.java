@@ -1,5 +1,3 @@
-import javax.xml.soap.Node;
-
 // @breif: KosarajuSCC Class(based on Kosaraju Algorithm)
 //         SCC means Strong Connected Component 即强连通分量
 //         注: 这是DAG里的一个概念
