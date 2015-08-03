@@ -17,15 +17,11 @@ public class Edge implements Comparable<Edge>{
 	
 	// @brief Return weight of an edge
 	// @status finished
-	public double weight(){
-		return weight;
-	}
+	public double weight(){	return weight;	}
 	
 	// @brief Return either end of an edge
 	// @status finished
-	public int either(){
-		return v;
-	}
+	public int either(){ return v;	}
 	
 	// @brief Return the other end of an edge
 	// @status finished

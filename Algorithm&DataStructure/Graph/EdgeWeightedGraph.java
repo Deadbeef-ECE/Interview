@@ -50,7 +50,7 @@ public class EdgeWeightedGraph {
 		        	int w = Integer.parseInt(tokens[1]);
 		        	double weight = Double.parseDouble(tokens[2]);
 		        	Edge e = new Edge(v, w, weight);
-		        	System.out.println("add edge between v: "+ v +  " to w: " + w + " weight: "+ weight);
+		        	//System.out.println("add edge between v: "+ v +  " to w: " + w + " weight: "+ weight);
 		        	addEdge(e);
 				}
 			}
@@ -62,8 +62,7 @@ public class EdgeWeightedGraph {
 	// @brief Add an edge between node v to node w
 	// @status finished
 	public void addEdge(Edge e){
-		int v = e.either(); 
-		int w = e.other(v);
+		int v = e.either(); int w = e.other(v);
 		adj[v].add(e);
 		adj[w].add(e);
 		E++;
