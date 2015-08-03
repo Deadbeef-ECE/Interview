@@ -1,11 +1,11 @@
-import java.util.Stack;
-
 // @breif: Topological Class
 //         Topological sort
 // @reference: Princeton Algorithm book P.375
 
+import java.util.LinkedList;
+
 public class Topological {
-	private Stack<Integer> order;
+	private LinkedList<Integer> order;
 	
 	// @brief Topological Constructor
 	// @status finished
@@ -19,15 +19,10 @@ public class Topological {
 	
 	// @brief Topological order
 	// @status finished
-	public Stack<Integer> order(){
-		Stack<Integer> cp = new Stack<Integer>();
-		if(!order.isEmpty()){
-			for(int num : order)
-				cp.push(num);
-		}
+	public LinkedList<Integer> order(){
 		System.out.println("The Topological order of this DAG: ");
-		while(!cp.isEmpty())
-			System.out.print(cp.pop()+" ");
+		for(int i: order)
+			System.out.print(i+" ");
 		System.out.println("\n");
 		return order;
 	}

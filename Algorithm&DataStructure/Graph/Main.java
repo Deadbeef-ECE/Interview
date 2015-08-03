@@ -94,6 +94,24 @@ public class Main {
 		System.out.println("********** Topological Test **********\n");
 		Topological topo = new Topological(DAG);
 		topo.order();
+		
+		// Connected Component:
+		System.out.println("********** KosarajuSCC Test **********\n");
+		digraph.printAdjList();
+		KosarajuSCC scc = new KosarajuSCC(digraph);
+		scc.count();
+		scc.id(0);	scc.id(1);
+		scc.id(3);	scc.id(4);	scc.id(6);
+		scc.id(7);	scc.id(8);
+		scc.id(10);	scc.id(12);
+		/* should be strongly connected */
+		scc.isStronglyConnected(0, 5);
+		scc.isStronglyConnected(9, 11);
+		/* should be not strongly connected */
+		scc.isStronglyConnected(7, 8);
+		scc.isStronglyConnected(0, 7);
+		scc.isStronglyConnected(7, 10);
+		scc.isStronglyConnected(9, 3);
 
 		System.out.println("\nend");
 	}

@@ -11,14 +11,17 @@ public class DepthFirstOrder {
 	private boolean[] marked;
 	private LinkedList<Integer> pre;
 	private LinkedList<Integer> post;
-	private Stack<Integer> reversePost;
+	
+	private Stack<Integer> reversePostStack;
+	private LinkedList<Integer> reversePost;
 	
 	// @brief DepthFirstOrder Constructor
 	// @status finished
 	public DepthFirstOrder(Digraph G){
 		pre = new LinkedList<Integer>();
 		post = new LinkedList<Integer>();
-		reversePost = new Stack<Integer>();
+		reversePostStack = new Stack<Integer>();
+		reversePost = new LinkedList<Integer>();
 		marked = new boolean[G.V()];
 		for(int v = 0; v < G.V(); v++){
 			if(!marked[v])
@@ -36,7 +39,7 @@ public class DepthFirstOrder {
 				dfs(G, w);
 		}
 		post.add(v);
-		reversePost.push(v);
+		reversePostStack.push(v);
 	}
 	
 	// @brief Print and return depth first pre order of this Digraph
@@ -61,15 +64,13 @@ public class DepthFirstOrder {
 	
 	// @brief Print and return depth first reversePost order of this Digraph
 	// @status finished
-	public Stack<Integer> reversePost(){
-		Stack<Integer> cp = new Stack<Integer>();
-		if(!reversePost.isEmpty()){
-			for(int num : reversePost)
-				cp.push(num);
-		}
+	public LinkedList<Integer> reversePost(){
 		System.out.println("The depth first reversePost order of this Digraph: ");
-		while(!cp.isEmpty())
-			System.out.print(cp.pop()+" ");
+		while(!reversePostStack.isEmpty()){
+			int s = reversePostStack.pop();
+			System.out.print(s + " ");
+			reversePost.add(s);
+		}
 		System.out.println("\n");
 		return reversePost;
 	}

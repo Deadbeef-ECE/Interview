@@ -92,11 +92,13 @@ public class Digraph {
 	//        original one
 	// @status finished
 	public Digraph reverse(){
-		Digraph R = new Digraph(this.V);
-		for(int i = 0; i < this.V; i++){
-			for(int j : this.adj[i])
-				addEdge(j, i);
+		Digraph R = new Digraph(V);
+		for(int i = 0; i < V; i++){
+			for(int j : adj[i])
+				R.addEdge(j, i);
 		}
+		System.out.println("Reversed DAG: ");
+		R.printAdjList();
 		return R;
 	}
 }
