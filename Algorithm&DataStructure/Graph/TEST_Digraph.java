@@ -1,6 +1,5 @@
 import java.io.IOException;
 
-
 public class TEST_Digraph {
 	public static void main(String[] args) throws IOException{
 		/*************** Digraph ****************/
