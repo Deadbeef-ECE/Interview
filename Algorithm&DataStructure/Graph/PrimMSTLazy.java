@@ -21,6 +21,7 @@ public class PrimMSTLazy {
 			Edge e = pq.poll();
 			int v = e.either();
 			int w = e.other(v);
+			// Why lazy? It's here
 			if(marked[v] && marked[w])	continue;
 			mst.add(e);
 			if(!marked[v])	visit(G, v);

@@ -92,6 +92,7 @@ public class Digraph {
 	// @brief Create a new Digraph wich has the opposite direction with the 
 	//        original one
 	// @status finished
+	// @Complexity O(V+E) time
 	public Digraph reverse(){
 		Digraph R = new Digraph(V);
 		for(int i = 0; i < V; i++){

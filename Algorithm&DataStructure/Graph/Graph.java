@@ -93,6 +93,7 @@ public class Graph {
 	
 	// @brief Return the (direct && indirect) connected node with s
 	// @status finished
+	// @Complexity O(V+E) time
 	public LinkedList<Integer> search(int s){
 		LinkedList<Integer> ret = new LinkedList<Integer>();
 		boolean[] marked = new boolean[this.V];
