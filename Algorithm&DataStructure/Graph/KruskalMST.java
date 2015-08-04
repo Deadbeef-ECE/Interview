@@ -4,6 +4,8 @@
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
+// O(E) space, O(ElogE) time
+// 适合稀疏图
 public class KruskalMST {
 	private LinkedList<Edge> mst;
 
