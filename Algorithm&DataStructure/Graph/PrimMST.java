@@ -4,6 +4,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
+// O(V) space, O(ElogV) time
 public class PrimMST {
 	private Edge[] edgeTo;
 	private double[] distTo;

@@ -13,10 +13,16 @@ public class TEST_EdgeWeightedGraph {
 		lazyPrimMST.edges();
 		lazyPrimMST.weight();
 		
-		// Real-time Prim
-		System.out.println("\n********** Real-time Prim Test **********\n");
+		// Real-time PrimMST
+		System.out.println("\n********** Real-time PrimMST Test **********\n");
 		PrimMST primMST = new PrimMST(EWG);
 		primMST.edges(true);
 		primMST.weight();
+		
+		// KruskalMST
+		System.out.println("\n********** kruskalMST Test **********\n");
+		KruskalMST kruskalMST = new KruskalMST(EWG);
+		kruskalMST.edges();
+		kruskalMST.weight();
 	}
 }

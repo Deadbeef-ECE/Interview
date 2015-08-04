@@ -42,7 +42,7 @@ public class EdgeWeightedGraph {
 	        			adj[i] = new LinkedList<Edge>();
 				}else if(cnt == 2){
 					this.E = Integer.parseInt(line);
-	        		System.out.println("Graph has "+ this.V + " vertices and "+this.E+" edges");
+	        		System.out.println("Graph has "+this.V+" vertices and "+this.E+" edges");
 				}else{
 					line = line.trim();
 	        		String[] tokens = line.split(" ");
@@ -94,4 +94,21 @@ public class EdgeWeightedGraph {
 	// @status finished
 	public int E() {	return E;	}
 	
+	// @brief Return edges of the EdgeWeightedGraph
+	// @status finished
+	public LinkedList<Edge> edges(){
+		LinkedList<Edge> list = new LinkedList<Edge>();
+		for(int v = 0; v < V; v++){
+			int selfLoops = 0;
+			for(Edge e : this.adj(v)){
+				if(e.other(v) > v){
+					list.add(e);
+				}else if (e.other(v) == v) {
+					if (selfLoops % 2 == 0) list.add(e);
+						selfLoops++;
+				}
+			}	
+		}
+		return list;
+	}
 }
