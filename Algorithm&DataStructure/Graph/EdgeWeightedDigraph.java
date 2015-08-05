@@ -61,7 +61,7 @@ public class EdgeWeightedDigraph {
 	// @brief Add a DirectedEdge e
 	// @status finished
 	public void addEdge(DirectedEdge e){
-		adj[e.from()].add(e);
+		adj[e.from()].addFirst(e);
 		E++;
 	}
 	
