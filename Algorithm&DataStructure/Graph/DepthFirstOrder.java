@@ -15,7 +15,7 @@ public class DepthFirstOrder {
 	private Stack<Integer> reversePostStack;
 	private LinkedList<Integer> reversePost;
 	
-	// @brief DepthFirstOrder Constructor
+	// @brief DepthFirstOrder Constructor with Digraph
 	// @status finished
 	public DepthFirstOrder(Digraph G){
 		pre = new LinkedList<Integer>();
@@ -41,6 +41,32 @@ public class DepthFirstOrder {
 		post.add(v);
 		reversePostStack.push(v);
 	}
+	
+	// @brief DepthFirstOrder Constructor with EdgeWeightedDigraph
+	// @status finished
+	public DepthFirstOrder(EdgeWeightedDigraph G) {
+		pre = new LinkedList<Integer>();
+		post = new LinkedList<Integer>();
+		reversePostStack = new Stack<Integer>();
+		reversePost = new LinkedList<Integer>();
+        marked = new boolean[G.V()];
+        for (int v = 0; v < G.V(); v++)
+            if (!marked[v]) dfs(G, v);
+    }
+	
+	// @brief dfs helper function of DepthFirstOrder
+	// @status finished
+    private void dfs(EdgeWeightedDigraph G, int v) {
+        marked[v] = true;
+        pre.add(v);
+        for (DirectedEdge e : G.adj(v)) {
+            if (!marked[e.to()]) {
+                dfs(G, e.to());
+            }
+        }
+        post.add(v);
+        reversePostStack.push(v);
+    }
 	
 	// @brief Print and return depth first pre order of this Digraph
 	// @status finished

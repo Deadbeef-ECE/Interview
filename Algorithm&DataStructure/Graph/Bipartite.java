@@ -3,7 +3,6 @@
 // @reference: Princeton Algorithm book P.352
 
 public class Bipartite {
-	private Graph G;
 	private boolean[] marked;
 	private boolean[] color;
 	private boolean isTwoColorable = true;
@@ -11,7 +10,6 @@ public class Bipartite {
 	// @brief Constructor of Bipartite class with Graph G as input
 	// @status finished
 	public Bipartite(Graph G){
-		this.G = G;
 		marked = new boolean[G.V()];
 		color = new boolean[G.V()];
 		for(int s = 0; s < G.V(); s++){

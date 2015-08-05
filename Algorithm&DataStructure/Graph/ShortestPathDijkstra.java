@@ -2,6 +2,9 @@
 //         Dijkstra algorithm to find the shortest path
 // @reference: Princeton Algorithm book P.423
 
+// 注: Dijkstra主要应用于加权有环有向图的最短路径, 且权值非负,
+//     对于加权无环有向图的最短路径, 见AcyclicSP.java, 此算法可以解决负权值无环有向图
+
 import java.util.LinkedList;
 
 // O(V) space, O(ElogV) time

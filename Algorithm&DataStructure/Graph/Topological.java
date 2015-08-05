@@ -7,7 +7,7 @@ import java.util.LinkedList;
 public class Topological {
 	private LinkedList<Integer> order;
 	
-	// @brief Topological Constructor
+	// @brief Topological Constructor with Digraph
 	// @status finished
 	public Topological(Digraph G){
 		DigraphCycle cyclefinder = new DigraphCycle(G);
@@ -16,6 +16,16 @@ public class Topological {
 			order = dfs.reversePost();
 		}
 	}
+	
+	// @brief Topological Constructor with EdgeWeightedDigraph
+	// @status finished
+	public Topological(EdgeWeightedDigraph G) {
+        EdgeWeightedDirectedCycle finder = new EdgeWeightedDirectedCycle(G);
+        if (!finder.hasCycle()) {
+            DepthFirstOrder dfs = new DepthFirstOrder(G);
+            order = dfs.reversePost();
+        }
+    }
 	
 	// @brief Topological order
 	// @status finished

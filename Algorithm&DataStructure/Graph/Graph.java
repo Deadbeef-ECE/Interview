@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class Graph {
 	private int V;
@@ -15,6 +14,7 @@ public class Graph {
 
 	// @brief Graph Constructor without input file
 	// @status finished
+	@SuppressWarnings("unchecked")
 	public Graph(int V){
 		this.V = V;
 		this.E = 0;
@@ -26,6 +26,7 @@ public class Graph {
 	
 	// @brief Graph Constructor which can load and build graph from .txt file
 	// @status finished
+	@SuppressWarnings("unchecked")
 	public Graph(String in) throws IOException{
 	    BufferedReader br = null; 
 	    try { 

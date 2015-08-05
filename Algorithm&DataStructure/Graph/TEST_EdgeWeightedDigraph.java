@@ -20,18 +20,15 @@ public class TEST_EdgeWeightedDigraph {
 		dijkstraSP.getPath(7);
 		dijkstraSP.getPath(8);
 
+		// AcyclicSP:
+		System.out.println("\n********** AcyclicSP Test **********\n");
+		System.out.println("@@@@@@@@@@ Create a EdgeWeighted DAG @@@@@@@@@@\n");
+		EdgeWeightedDigraph EWDAG = new EdgeWeightedDigraph("bin/tinyEWDAG.txt");
+		EWDAG.printAdjList();
+		AcyclicSP AcyclicSPFrom0 = new AcyclicSP(EWDAG, 0);
+		AcyclicSPFrom0.getPath(2);
 
-//		
-//		// Real-time PrimMST
-//		System.out.println("\n********** Real-time PrimMST Test **********\n");
-//		PrimMST primMST = new PrimMST(EWG);
-//		primMST.edges(true);
-//		primMST.weight();
-//		
-//		// KruskalMST
-//		System.out.println("\n********** kruskalMST Test **********\n");
-//		KruskalMST kruskalMST = new KruskalMST(EWG);
-//		kruskalMST.edges();
-//		kruskalMST.weight();
+		AcyclicSP AcyclicSPFrom1 = new AcyclicSP(EWDAG, 1);
+		AcyclicSPFrom1.getPath(2);	
 	}
 }

@@ -4,7 +4,6 @@
 
 public class Cycle {
 	private boolean hasCycle;
-	private Graph G;
 	private boolean[] marked;
 	
 	// @brief Constructor of Cycle class with Graph G as input
@@ -12,7 +11,6 @@ public class Cycle {
 	public Cycle(Graph G){
 		marked = new boolean[G.V()];
 		hasCycle = false;
-		this.G = G;
 		for(int s = 0; s < G.V(); s++){
 			if(!marked[s])
 				dfs(G, s, s);
