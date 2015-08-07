@@ -30,3 +30,28 @@ Golden file 什么的  测试不太懂。完全不知道说的是什么
 
 20.
 given the defination of utf-8, write code to decide a string is valid utf-8 or not.
+
+21.
+设计一共 online survey, 可以用 SQL 或者 java 神马的都行
+
+22.
+一段代码,用 string 表示的,写一个函数,返回所有的注释里面的内容,返回//和/* */里 的内容
+
+23.
+给个 n 乘 n 矩阵, 写set 和 getSum (of a sub-matrix)。本来写这个也不难吧结果 handling error 
+的时候不太记得 java 的 try/catch 怎么写了(快一年没怎么用过 java 了泪千行......然后问时 间复杂度,然后说给我一个 
+large memory 怎么能够让 getSum 的时间复杂度变为 O(1)。想 不出来问了􏰀示,然后他就􏰀示了一句"the memory is really 
+huge"我就有点懂了,先是说把 所有 sub-matrix 都存到 memory 里头。然后问空间复杂度,我就当场一个一个把这个矩阵有 多少个 sub 
+matrix 给手算出来了,然后听到面试官夸我 your maths is impressive!!! 然后又问 我如何在时间复杂度还是 O(1)的情况下减少空间复杂度
+
+25.
+找字符串查重的问题。
+
+27.
+先问了一题“用同样的代码同样的数据跑测试,为啥结果会不一样,有两种可能”,我回答 可能是因为代码里有 random generator 啥的,或者是这个程序和时间有关系之类的
+
+30.
+写一个 meeting schedule, 求最少的房间
+
+35.
+desgin+coding,输入一个 sparse matrix 包含一些 id(我当时不知道 sparse 是什么,到面试结 束了我查了下才知道), 设计一个 class 操作 sparse matrix.

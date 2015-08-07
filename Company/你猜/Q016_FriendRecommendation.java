@@ -20,6 +20,7 @@ class Network{
 	LinkedList<person>[] adj;
 	
 	// create graph from input file
+	@SuppressWarnings("unchecked")
 	public Network(String in) throws IOException{
 		BufferedReader br = null; 
 	    try { 

@@ -27,4 +27,29 @@ public class Trie {
 	public TrieNode root(){
 		return root;
 	}
+	
+	// Check if there is any word in the trie
+    // that starts with the given prefix.
+    public boolean startWith(String prefix){
+        TrieNode cur = root;
+        for(int i = 0; i < prefix.length(); i++){
+            int index = prefix.charAt(i) - 'a';
+            if(cur.child[index] == null)
+                return false;
+            cur = cur.child[index];
+        }
+        return true;
+    }
+    
+    // Check if the word is in the trie.
+    public boolean search(String word){
+        TrieNode cur = root;
+        for(int i = 0; i < word.length(); i++){
+            int index = word.charAt(i) - 'a';
+            if(cur.child[index] == null)
+                return false;
+            cur = cur.child[index];
+        }
+        return cur.end;
+    }
 }

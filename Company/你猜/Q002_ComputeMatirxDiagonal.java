@@ -3,7 +3,8 @@
 // e.g.:
 // [1, 2, 3
 //  4, 5, 6
-//  7, 8, 9] return [7, 12, 15, 8, 3]
+//  7, 8, 9] 
+// return [7, 12, 15, 8, 3]
 
 public class Q002_ComputeMatirxDiagonal {
 	// @author: Lei Wang

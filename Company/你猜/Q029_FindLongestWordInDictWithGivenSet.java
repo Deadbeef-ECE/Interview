@@ -1,5 +1,5 @@
 // 29.
-// 假设有一个 dictionary 和一个字符的 set, 找到从该字符集中能组成的存在于dictionary中的最长的 word。
+// 假设有一个dictionary和一个字符的 set, 找到从该字符集中能组成的存在于dictionary中的最长的word
 
 import java.util.HashSet;
 import java.util.Set;

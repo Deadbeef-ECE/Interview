@@ -71,7 +71,6 @@ public class Q026_ShortestPathInRoom {
 	
 	private static void test(char[][] room, int x1, int y1, int x2, int y2){
 		System.out.println("Start: ["+ x1+","+y1+"] -> End: [" + x2 +"," + y2 + "], \nRomm: ");
-		int row = room.length; int col = room[0].length;
 		for(int i = 0; i < row; i++){
 			for(int j = 0; j < col; j++){
 				System.out.print(room[i][j]+" ");
