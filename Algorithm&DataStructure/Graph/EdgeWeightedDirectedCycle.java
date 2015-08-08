@@ -46,6 +46,10 @@ public class EdgeWeightedDirectedCycle {
 	// @brief Print and return the first detected cycle in Digraph
 	// @status finished
 	public Stack<DirectedEdge> cycle(){
+		if(cycle == null)
+			return null;
+		System.out.print("Print cycle:\n");
+
 		Stack<DirectedEdge> cp = new Stack<DirectedEdge>();
 		if(!cycle.isEmpty()){
 			for(DirectedEdge num : cycle){
