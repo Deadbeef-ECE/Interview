@@ -1,3 +1,7 @@
+/* 题意:
+ * 和243不同的是, word1和word2可以相同, 但必须是list里不同的两个word
+ */
+
 public class Solution {
     // Two pointer solution:
     // O(1) space, O(n) time
