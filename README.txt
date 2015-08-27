@@ -4,9 +4,6 @@ Root
   |- Algorithm&DataStructure: My implementation of princeton book.
   |    |- Sort
   |    |- BST
-  |   
-  |- Company: Interview questions
-  |    |- Bloomberg  |- PocketGems
   |     
   |- Leetcode: java solution(source code) of leetcode
   |    |- Array   |- String   |- LinkedList      
