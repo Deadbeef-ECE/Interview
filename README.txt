@@ -1,3 +1,9 @@
+NOTE:
+I removed Company Interview Questions from this repo and create a private
+repo for them. If you know me personally, you must know how to contact with
+me. Then tell me you want to see it and I can give you the access to it.
+Sorry for unknown visitors.
+
 File Architecture:
 Root
   |- README.txt: This file
