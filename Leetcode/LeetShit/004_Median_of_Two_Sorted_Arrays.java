@@ -1,3 +1,7 @@
+/* 入选理由: 
+ * 总之就是不简单, 需要注意的地方太多
+ */
+
 public class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int len = nums1.length + nums2.length;
