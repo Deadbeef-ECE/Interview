@@ -1,31 +1,43 @@
 public class Solution {
+    // O(m*n*k) time: k is the length of the word
+    // worst case example
+    // e.g: find eat
+    //      t a t
+    //      a e a
+    //      t a t
+    // O(m*n) space: one copy of board
+    private int row, col;
+    private boolean find;
+    private boolean[][] status;
     public boolean exist(char[][] board, String word) {
-        int row = board.length;
-        int col = board[0].length;
-        boolean[][] visited = new boolean[row][col];
-        
-        for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-                if(doDFS(i, j, board, 0, word, visited))
-                    return true;
-            }
-        }
-        return false;
+        if(board == null || board.length == 0)  return false; 
+        row = board.length;
+        col = board[0].length;
+        find = false;
+        status = new boolean[row][col];
+        search(board, word);
+        return find;
     }
     
-    private boolean doDFS(int i, int j, char[][] board, int pos, String word, boolean[][] visited){
-        if(pos == word.length())    return true;
-        int row = board.length;
-        int col = board[0].length;
-        if(i < 0 || j < 0 || i >= row || j >= col || board[i][j] != word.charAt(pos) || 
-            visited[i][j] == true)
-            return false;
-        visited[i][j] = true;
-        if(doDFS(i + 1, j, board, pos + 1, word, visited)) return true;
-        if(doDFS(i, j + 1, board, pos + 1, word, visited)) return true;
-        if(doDFS(i - 1, j, board, pos + 1, word, visited)) return true;
-        if(doDFS(i, j - 1, board, pos + 1, word, visited)) return true;
-        visited[i][j] = false;
-        return false;
+    private void search(char[][] board, String word){
+        for(int i = 0; i < row; i++){
+            for(int j = 0; j < col; j++){
+                dfs(i, j, 0, board, word);
+            }
+        }
+    }
+    
+    private void dfs(int r, int c, int index, char[][] board, String word){
+        if(r < 0 || r >= row || c < 0 || c >= col || find ||
+        status[r][c] || word.charAt(index) != board[r][c])
+            return;
+        status[r][c] = true;
+        if(index == word.length() - 1)
+            find = true;
+        dfs(r+1, c, index+1, board, word);
+        dfs(r-1, c, index+1, board, word);
+        dfs(r, c+1, index+1, board, word);
+        dfs(r, c-1, index+1, board, word);
+        status[r][c] = false;
     }
 }
