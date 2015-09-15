@@ -2,9 +2,10 @@ public class Solution {
     // O(m*n*k) time: k is the length of the word
     // worst case example
     // e.g: find eat
-    //      e a e
-    //      a t a
-    //      e a e
+    //      e a e a
+    //      a e a e
+    //      e a e a
+    //      a e a t
     // O(m*n) space: one copy of board
     private int row, col;
     private boolean find;
