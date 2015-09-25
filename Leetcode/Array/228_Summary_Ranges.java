@@ -5,30 +5,27 @@ public class Solution {
         List<String> ret = new LinkedList<String>();
         if(nums == null || nums.length == 0)
             return ret;
-        int start =  nums[0];
+        int start = nums[0];
         int end = nums[0];
-        for(int i = 1; i < nums.length; i++){
-            if(nums[i] == nums[i-1]+1){
-                end = nums[i];
-                continue;
-            }
-            String str = generateRange(start, end);
-            ret.add(str);
-            start = nums[i];
-            end = start;
+        int i = 0;
+        for(i = 0; i < nums.length - 1; i++){
+            if(nums[i] + 1 == nums[i+1]) continue;
+            end = nums[i];
+            addRange(start, end, ret);
+            start = nums[i+1];
         }
-        String str = generateRange(start, end);
-        ret.add(str);
+        end = nums[i];
+        addRange(start, end, ret);
         return ret;
     }
     
-    private String generateRange(int start, int end){
-        StringBuilder str = new StringBuilder();
-        str.append(start);
+    private void addRange(int start, int end, List<String> ret){
+        StringBuilder sb = new StringBuilder();
+        sb.append(start);
         if(start != end){
-            str.append("->");
-            str.append(end); 
+            sb.append("->");
+            sb.append(end);
         }
-        return str.toString();
+        ret.add(sb.toString());
     }
 }
