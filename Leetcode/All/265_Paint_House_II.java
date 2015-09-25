@@ -10,7 +10,31 @@
  */
 
 public class Solution {
-    // O(nk) space, O(nk) time
+    // O(k) space, O(nk) time
+    public int minCostII(int[][] costs) {
+        if(costs == null || costs.length == 0)   return 0;
+        int n = costs.length;
+        int k = costs[0].length;
+        int[] dp = new int[k];  // the cost of ith color until each house
+        int m1 = 0 , m2 = 0;
+        
+        for(int i = 0; i < n; i++){
+            int temp1 = m1, temp2 = m2;
+            m1 = Integer.MAX_VALUE;
+            m2 = Integer.MAX_VALUE;
+            for(int j = 0; j < k; j++){
+                dp[j] = (dp[j] == temp1 ? temp2 : temp1) + costs[i][j];
+                if(m1 <= dp[j]){
+                    m2 = Math.min(dp[j], m2);
+                }else{
+                    m2 = m1;
+                    m1 = dp[j];
+                }
+            }
+        }
+        return m1;
+    }
+    // O(nk) space, O(nk^2) time
     public int minCostII(int[][] costs) {
         if(costs == null || costs.length == 0)
             return 0;
