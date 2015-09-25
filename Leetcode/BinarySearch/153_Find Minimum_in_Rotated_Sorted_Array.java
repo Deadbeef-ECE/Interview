@@ -22,4 +22,20 @@ public class Solution {
         }
         return arr[lo];
     }
+
+    public int findMin(int[] nums) {
+        if(nums == null || nums.length == 0)
+            return 0;
+        int lo = 0, hi = nums.length - 1;
+        int ret = nums[0];
+        while(lo <= hi){
+            int mid = lo + (hi - lo)/2;
+            if(nums[mid] <= nums[hi])
+                hi = mid - 1;
+            else
+                lo = mid + 1;
+            ret = Math.min(ret, nums[mid]);
+        }
+        return ret;
+    }
 }

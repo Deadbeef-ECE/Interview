@@ -37,4 +37,45 @@ public class Solution {
             q = tmp2;
         }
     }
+
+    public void reorderList(ListNode head) {
+        if(head == null || head.next == null || head.next.next == null)   
+            return;
+        // first part >= second part
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast.next != null){
+            if(fast.next.next == null)
+                break;
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        ListNode first = head;
+        ListNode second = slow.next;
+        
+        // reverse second part;
+        slow.next = null;
+        ListNode pre = slow;
+        ListNode cur = second;
+        ListNode front = second.next;
+        while(cur != null){
+            cur.next = pre.next;
+            pre.next = cur;
+            cur = front;
+            front = front == null ? null : front.next;
+        }
+        // cut between two parts
+        second = slow.next;
+        slow.next = null;
+
+        ListNode p1 = first, p2 = second;
+        while(p2 != null){
+            ListNode temp = p2.next;
+            p2.next = p1.next;
+            p1.next = p2;
+            p1 = p2.next;
+            p2 = temp;
+        }
+        return;
+    }
 }
