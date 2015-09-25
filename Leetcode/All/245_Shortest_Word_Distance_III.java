@@ -1,28 +1,29 @@
+/* 题意:
+ * 和243不同的是, word1和word2可以相同, 但必须是list里不同的两个word
+ */
+
 public class Solution {
     // Two pointer solution:
     // O(1) space, O(n) time
-    public int shortestWordDistance(String[] words, String word1, String word2) {
-        boolean flag = word1.equals(word2);
-        int p1 = -1, p2 = -1;
-        int min = Integer.MAX_VALUE;
+    public int shortestDistance(String[] words, String word1, String word2) {
+        if(words == null || words.length == 0)
+            return 0;
+        int p1 = -1;
+        int p2 = -1;
+        int dist = Integer.MAX_VALUE;
+
         for(int i = 0; i < words.length; i++){
-            if(words[i].equals(word1)){
-                if(flag){
-                    if(p1 != -1)
-                        min = Math.min(min, Math.abs(p1 - i));
-                    p1 = i;
-                }else{
-                    p1 = i;
-                    if (p2 != -1)
-                        min = Math.min(min, Math.abs(p1 - p2));
-                }
-            }else if(words[i].equals(word2)){
+            if(words[i].equals(word1))
+                p1 = i;
+            if(words[i].equals(word2)){
+                if(word1.equals(word2) && p1 == i)
+                    continue;
                 p2 = i;
-                if(p1 != -1)
-                    min = Math.min(min, Math.abs(p1 - p2));
             }
+            if(p1 != -1 && p2 != -1 && p1 != p2)
+                dist = Math.min(dist, Math.abs(p1 - p2));
         }
-        return min;
+        return dist;
     }
 
     // HashMap solution
