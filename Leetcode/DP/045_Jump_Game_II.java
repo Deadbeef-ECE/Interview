@@ -30,7 +30,7 @@ public class Solution {
     // 别人家解法, 感觉还是自己家解法牛逼点,因为对于nums = {0,0,0}这种走不到最后
     // 的input, 此解法作废(突然觉得自己好机智)
     public int jump2(int[] nums) {
-        if(A.length <= 1)
+        if(nums.length <= 1)
             return 0;
         int step = 0;
         int MaxDist = 0;
