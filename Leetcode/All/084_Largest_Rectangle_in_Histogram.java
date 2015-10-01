@@ -1,5 +1,27 @@
 public class Solution {
     // O(n) space, O(1) time
+    public int largestRectangleArea(int[] height) {
+        if(height == null || height.length == 0)
+            return 0;
+            
+        Stack<Integer> stack = new Stack<Integer>();
+        int i = 0;
+        int max = height[0];
+        while(i <= height.length){
+            int cur = i == height.length ? -1 : height[i]; 
+            if(stack.isEmpty() || cur > height[stack.peek()]){
+                stack.push(i);
+                i++;
+            }else if(!stack.isEmpty()){
+                int start = stack.pop();
+                int width = stack.isEmpty() ? i : i - 1 - stack.peek();
+                max = Math.max(max, width * height[start]);
+            }
+        }
+        return max;
+    }
+    
+    // O(n) space, O(1) time
     public int largestRectangleArea(int[] h) {
         if(h == null || h.length == 0)
             return 0;
