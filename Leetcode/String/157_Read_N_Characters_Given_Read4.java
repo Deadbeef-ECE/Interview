@@ -22,4 +22,18 @@ public class Solution extends Reader4 {
         }
         return num;
     }
+
+    // More Elegant Solution
+    public int read(char[] buf, int n) {
+        char[] temp = new char[4];
+        int num = 4;
+        int i = 0;
+        while(i < n && num == 4){
+            num = read4(temp);
+            for(int j = 0; j < num && i < n; j++){
+                buf[i++] = temp[j];
+            }
+        }
+        return i;
+    }
 }
