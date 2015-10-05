@@ -1,4 +1,32 @@
 public class Solution {
+    // new version solution
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> ret = new LinkedList<List<String>>();
+        if(strs == null || strs.length == 0)
+            return ret;
+        HashMap<String, List<String>> map = new HashMap<String, List<String>>();
+        for(int i = 0; i < strs.length; i++){
+            String str = strs[i];
+            String sorted = sort(str);
+            if(!map.containsKey(sorted)){
+                List<String> list = new LinkedList<String>();
+                map.put(sorted, list);
+            }
+            map.get(sorted).add(str);
+        }
+        for(List<String> list : map.values()){
+            Collections.sort(list);
+            ret.add(list);
+        }
+        return ret;
+    }
+    
+    private String sort(String str){
+        char[] arr = str.toCharArray();
+        Arrays.sort(arr);
+        return new String(arr);
+    }
+
     // O(n) space, O(n) time
     public List<String> anagrams(String[] strs) {
         List<String> ret = new LinkedList<String>();
