@@ -19,6 +19,7 @@ public class Codec {
     public List<String> decode(String s) {
         List<String> ret = new LinkedList<String>();
         int start = 0;
+        
         for(int i = 0; i < s.length(); i++){
             if(s.charAt(i) != '#')  continue;
             int len = Integer.valueOf(s.substring(start, i));

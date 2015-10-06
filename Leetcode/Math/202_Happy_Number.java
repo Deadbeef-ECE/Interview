@@ -8,15 +8,13 @@ public class Solution {
             int temp = n;
             while(temp != 0){
                 int digit = temp % 10;
-                next += digit*digit;
+                next += digit * digit;
                 temp /= 10;
             }
             if(set.contains(next)){
                 return false;
-            }else{
-                set.add(next);
-                n = next;
-            }
+            set.add(next);
+            n = next;
         }
         return true;
     }

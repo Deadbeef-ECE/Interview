@@ -65,7 +65,7 @@ public class Solution {
                 else if(j > 1 && p.charAt(j-1) == '*')
                     // 情况一:p的*匹配0个前符号, s和p去掉后俩字符(dp[i][j-2])
                     dp[i][j] = dp[i][j-2]|| 
-                    // 情况二:p的*匹配一个前符号, s去掉最后一个, dp[i-1](s.charAt(i-2))
+                    // 情况二:p的*匹配一个前符号, s当前字符和p的*前面的字符相同
                     (dp[i-1][j] && (s.charAt(i-1) == p.charAt(j-2) || p.charAt(j-2) == '.'));
             }
         }
