@@ -19,4 +19,18 @@ public class Solution {
         else
             return ret*ret*x;
     }
+    // iteration & bit manipulate
+    public double myPow(double x, int n) {
+        double ret = 1.0;
+        double p = x;
+        long m = (n >= 0) ? n : -n;
+        while(m > 0) {
+            if ((m & 0x1) == 1) {
+                ret *= p;
+            }
+            m >>= 1;
+            p *= p;
+        }
+        return (n >= 0) ? ret : 1.0/ret;
+    }
 }
