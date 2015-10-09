@@ -1,5 +1,6 @@
 public class Solution {
     // Brute force:
+    // O(n) space, O()
     public int countPrimes(int n) {
         int cnt = 0;
         for(int i = 2; i <= n; i++){
@@ -14,7 +15,7 @@ public class Solution {
         }
         return true;
     }
-    
+
     // Sieve method
     // O(n) space, O(n^2) time
     public int countPrimes(int n) {

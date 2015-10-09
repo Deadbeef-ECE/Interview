@@ -28,3 +28,26 @@ class intervalComparator implements Comparator<Interval>{
         return a.start - b.start;
     }
 }
+
+// Better Average running time with exception
+public class Solution {
+    public boolean canAttendMeetings(Interval[] intervals) {
+        if(intervals == null)   return true;
+        try{
+            Arrays.sort(intervals, new IntervalComparator());
+        }catch(Exception E){
+            return false;
+        }
+        return true;
+    }
+}
+class IntervalComparator implements Comparator<Interval>{
+    public int compare(Interval a, Interval b){
+        if(a.start > b.start && a.start >= b.end)   
+            return 1;
+        else if(a.start < b.start && a.end <= b.start)  
+            return -1;
+        else 
+            throw new RuntimeException();
+    }
+}

@@ -50,7 +50,7 @@ public class Solution {
     }
 
     // Math:
-    // O(1) time, O(1) space
+    // O(n) time, O(1) space
     public List<Integer> grayCode(int n) {
         List<Integer> ret = new LinkedList<Integer>();
         int size = 1 << n;
