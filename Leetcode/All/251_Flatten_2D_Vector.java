@@ -12,9 +12,7 @@ public class Vector2D {
     }
 
     public int next() {
-        int ret = list.get(cur);
-        cur++;
-        return ret;
+        return list.get(cur++);
     }
 
     public boolean hasNext() {
