@@ -1,5 +1,25 @@
 public class Solution {
-    // PriorityQueue:
+    // Unbounded MaxPQ brute force
+    // O(n) space, O(nlogn) time
+    public int findKthLargest(int[] nums, int k) {
+        if(nums == null || nums.length == 0)
+            return 0;
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>(new Comparator<Integer>(){
+            public int compare(Integer o1, Integer o2){
+                return o2 - o1;
+            }
+        });
+        for(int i = 0; i < nums.length; i++)
+            pq.offer(nums[i]);
+        int ret = 0;
+        while(k > 0){
+            ret = pq.poll();
+            k--;
+        }
+        return ret;
+    }
+
+    // Bounded PriorityQueue:
     // O(k) space, O(nlogk) time
     public int findKthLargest(int[] nums, int k) {
         if(nums == null || nums.length == 0)
