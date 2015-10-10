@@ -1,4 +1,6 @@
 public class Solution {
+    // BFS
+    // O(n) space, O(n) time
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> ret = new LinkedList<Integer>();
         if(root == null)    return ret;
@@ -17,5 +19,25 @@ public class Solution {
             }
         }
         return ret;
+    }
+
+    // DFS
+    // O(1) Or O(height) space, O(n) time
+    int level = 0;;
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> ret = new LinkedList<Integer>();
+        if(root == null)    return ret;
+        inorder(root, 1, ret);
+        return ret;
+    }
+    
+    private void inorder(TreeNode root, int curLevel, List<Integer> ret){
+        if(root == null)    return;
+        if(curLevel > level){
+            ret.add(root.val);
+            level = curLevel;
+        }
+        inorder(root.right, curLevel+1, ret);
+        inorder(root.left, curLevel+1, ret);
     }
 }
