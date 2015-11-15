@@ -18,7 +18,7 @@ public class Solution {
     // Then: T(n)/n! = O(n)/n-1! + O(n-1)/n-2! + O(n-2)/n-3! + ...
     //               = n/n-1! + n-1/n-2! + n-2/n-3! + ... + 2/1! + 1/0!
     //               = 1/(n-1!/n) + 1/(n-2!/n-1) +...
-    //               < 1/n + 1/n +....   = n 
+    //               < 1/n + 1/n +....   = n (while n > 5)
     // Finally, we know that T(n)/n! < n, which means T(n) = O(n * n!)
     //
     // Actually we can do much better to shrink the time complexity to

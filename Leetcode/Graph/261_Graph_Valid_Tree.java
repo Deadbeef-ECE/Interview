@@ -5,7 +5,7 @@ public class Solution {
     public boolean validTree(int n, int[][] edges) {
         if(n <= 0 || edges == null)  return false;
 
-        if(edges.length != n-1) return false;  // Unconnected part is not allowed
+        if(edges.length != n-1) return false;  // Disjoint sets are not allowed
 
         int[] UF = new int[n];
         for(int i = 0; i < n; i++){
@@ -28,4 +28,8 @@ public class Solution {
             i = uf[i];
         return i;
     }
+
+    // Union Find - Quck Find
+    // O(1) find and O(n) union
+
 }

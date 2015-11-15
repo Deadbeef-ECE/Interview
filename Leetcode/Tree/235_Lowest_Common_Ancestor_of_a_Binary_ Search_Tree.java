@@ -24,4 +24,23 @@ public class Solution {
             return root;
         }
     }
+
+    // Iteration:
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        // assume p is always smaller than q
+        if(p.val > q.val){
+            TreeNode temp = p;
+            p = q;
+            q = temp;
+        }
+        
+        TreeNode lca = root;
+        while(!(p.val <= lca.val && q.val >= lca.val)){
+            if(p.val > lca.val)
+                lca = lca.right;
+            else if(q.val < lca.val)
+                lca = lca.left;
+        }
+        return lca;
+    }
 }
