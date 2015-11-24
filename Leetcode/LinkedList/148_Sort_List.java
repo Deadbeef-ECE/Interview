@@ -4,37 +4,30 @@ public class Solution {
     public ListNode sortList(ListNode head) {
         if(head == null || head.next == null)
             return head;
-        ListNode slow = head, fast = head;
-        ListNode firstHalf = head;
-        ListNode secondHalf = null;
-
-        while(fast.next != null && fast.next.next != null){
-            slow = slow.next;
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast.next!= null && fast.next.next != null){
             fast = fast.next.next;
+            slow = slow.next;
         }
-        // cut the list
-        secondHalf = slow.next;
+        
+        ListNode a = head;
+        ListNode b = slow.next;
         slow.next = null;
         
-        // sort
-        ListNode leftHead = null, rightHead = null;
-        if(firstHalf != secondHalf){
-            leftHead = sortList(firstHalf);
-            rightHead = sortList(secondHalf);
-        }
-        return mergeTwoList(leftHead, rightHead);
+        return mergeTwoList(sortList(a), sortList(b));
     }
     
-    private ListNode mergeTwoList(ListNode l, ListNode r){
-        ListNode dummy = new ListNode(-1);
+    private ListNode mergeTwoList(ListNode l1, ListNode l2){
+        ListNode dummy = new ListNode(0);
         ListNode cur = dummy;
-        while(l != null && r != null){
-            cur.next = l.val < r.val ? l : r;
-            l = cur.next == l ? l.next : l;
-            r = cur.next == r ? r.next : r;
+        while(l1 != null && l2 != null){
+            cur.next = l1.val < l2.val ? l1 : l2;
+            l1 = cur.next == l1 ? l1.next : l1;
+            l2 = cur.next == l2 ? l2.next : l2;
             cur = cur.next;
         }
-        cur.next = l == null ? r : l;
+        cur.next = l1 == null ? l2 : l1;
         return dummy.next;
     }
 }
