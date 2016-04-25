@@ -1,46 +1,53 @@
 public class Solution {
-    Stack<Integer> reverseOrder;
+    Stack<Integer> reversePostOrder;
+    boolean hasCycle;
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        int[] visit = new int[numCourses];
+        reversePostOrder = new Stack<Integer>();
+        hasCycle = false;
         int[] ret = new int[numCourses];
-        reverseOrder = new Stack<Integer>();
-        HashMap<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
-        for(int[] pair : prerequisites){
-            if(map.containsKey(pair[1])){
-                map.get(pair[1]).add(pair[0]);
-            }else{
-                List<Integer> list = new LinkedList<Integer>();
-                list.add(pair[0]);
-                map.put(pair[1], list);
+        int[] visited = new int[numCourses];
+        Map<Integer, List<Integer>> map = buildGraph(numCourses, prerequisites);
+        
+        for(int i = 0; i < numCourses; i++){
+            if(visited[i] == 0){
+                dfs(i, map, visited);
             }
         }
         
-        for(int i = 0; i < numCourses; i++){
-            if(visit[i] == 0){
-                if(!dfs(map, visit, i))
-                    return new int[0];
-            }
-        }
-        int i = 0;
-        while(!reverseOrder.isEmpty()){
-            ret[i++] = reverseOrder.pop();
+        if(hasCycle)    return new int[0];
+        int j = 0;
+        while(!reversePostOrder.isEmpty()){
+            ret[j++] = reversePostOrder.pop();
         }
         return ret;
     }
     
-    private boolean dfs(HashMap<Integer, List<Integer>> map, int[] visit, int i){
-        if(visit[i] == -1)  return false;
-        if(visit[i] == 1)   return true;
-        visit[i] = -1;
+    private void dfs(int i, Map<Integer, List<Integer>> map, int[] visited){
+        visited[i] = -1;
         if(map.containsKey(i)){
-             for (int neighbor : map.get(i)) {
-                if (!dfs(map, visit, neighbor)) {
-                        return false;
+            for(int n : map.get(i)){
+                if(hasCycle) return;
+                if(visited[n] == -1){
+                    hasCycle = true;
+                    return;
                 }
+                if(visited[n] == 0)
+                    dfs(n, map, visited);
             }
         }
-        visit[i] = 1;
-        reverseOrder.push(i);
-        return true;
+        reversePostOrder.push(i);
+        visited[i] = 1;
+    }
+    
+    private Map<Integer, List<Integer>> buildGraph(int numCourses, int[][] prerequisites){
+        Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
+        for(int[] pair : prerequisites){
+            int cur = pair[0];
+            int pre = pair[1];
+            if(!map.containsKey(pre))
+                map.put(pre, new LinkedList<Integer>());
+            map.get(pre).add(cur);
+        }
+        return map;
     }
 }
