@@ -1,3 +1,4 @@
+// http://bookshadow.com/weblog/2015/07/10/leetcode-linked-list-cycle-ii/
 public class Solution {
     // O(1) space, O(n) time
     public ListNode detectCycle(ListNode head) {
