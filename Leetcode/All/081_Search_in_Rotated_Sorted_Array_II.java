@@ -28,4 +28,31 @@ public class Solution {
         }
         return false;
     }
+    
+    // 更好理解的版本:
+    public boolean search(int[] nums, int target) {
+        if(nums == null || nums.length == 0)
+            return false;
+        int l = 0, h = nums.length - 1;
+        while(l <= h){
+            int mid = l + (h - l)/2;
+            if(nums[mid] == target) return true;
+            // Not determined
+            if(nums[h] == nums[mid])
+                h--;
+            // right part is sorted
+            else if(nums[mid] < nums[h]){
+                if(target > nums[mid] && target <= nums[h])
+                    l = mid + 1;
+                else 
+                    h = mid - 1;
+            // left part is sorted
+            }else{
+                if(target < nums[mid] && target >= nums[l])
+                    h = mid - 1;
+                else 
+                    l = mid + 1;
+            }
+        }
+        return false;
 }

@@ -23,6 +23,7 @@ public class Solution {
         return arr[lo];
     }
 
+    // 偷懒解法， 不推荐，如果让你返回min的index，此解法废了
     public int findMin(int[] nums) {
         if(nums == null || nums.length == 0)
             return 0;

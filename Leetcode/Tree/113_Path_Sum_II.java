@@ -27,4 +27,24 @@ public class Solution {
             path.remove(path.size()-1);
         }
     }
+
+    //精简版本:
+    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>> ret = new LinkedList<List<Integer>>();
+        List<Integer> path = new LinkedList<Integer>();
+        helper(root, ret, path, sum);
+        return ret;
+    }
+    
+    private void helper(TreeNode root, List<List<Integer>> ret, List<Integer> path, int sum){
+        if(root == null)    return;
+        path.add(root.val);
+        if(root.left == null && root.right == null && sum - root.val == 0){
+            List<Integer> sol = new LinkedList<Integer>(path);
+            ret.add(sol);
+        }
+        helper(root.left, ret, path, sum - root.val);
+        helper(root.right, ret, path, sum - root.val);
+        path.remove(path.size() - 1);
+    }
 }
