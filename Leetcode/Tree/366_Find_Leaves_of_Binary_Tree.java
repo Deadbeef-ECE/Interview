@@ -28,4 +28,22 @@ public class Solution {
         depth += Math.max(left, right);  
         return depth;  
     }  
-}ß
+    // 简洁版本: 边遍历边加node:
+    public List<List<Integer>> findLeaves(TreeNode root) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();  
+        if(root == null)    return ret;
+        helper(root, ret);
+        return ret;
+    }
+    
+    public int helper(TreeNode root, List<List<Integer>> ret){
+        if(root == null)    return -1; // -1是因为index of list从0 开始
+        int l = helper(root.left, ret);
+        int r = helper(root.right, ret);
+        int depth = Math.max(l, r) + 1;
+        if(ret.size() == depth)
+            ret.add(new ArrayList<Integer>());
+        ret.get(depth).add(root.val);
+        return depth;
+    }
+}

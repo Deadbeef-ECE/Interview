@@ -8,14 +8,15 @@ public class Solution {
         
         while(!queue.isEmpty()){
             TreeLinkNode cur = queue.poll();
-            if(cur!=null){
+            if(cur != null){
                 cur.next = queue.peek();
                 if(cur.left != null)    
                     queue.add(cur.left);
                 if(cur.right != null)   
                     queue.add(cur.right);
             }else{
-                if(!queue.isEmpty()) queue.add(null);
+                if(!queue.isEmpty()) 
+                    queue.add(null);
             }
         }
     }

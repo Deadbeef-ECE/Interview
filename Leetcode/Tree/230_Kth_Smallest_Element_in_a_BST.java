@@ -20,4 +20,25 @@ public class Solution {
             helper(root.right, start, k, ret);   
         }
     }
+    // Iteration with Stack:
+    public int kthSmallest(TreeNode root, int k) {
+        if(root == null)    return 0;
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            if(root != null && root.left != null){
+                stack.push(root.left);
+                root = root.left;
+            }else{
+                TreeNode temp = stack.pop();
+                k--;
+                if(k == 0)  return temp.val;
+                if(temp.right != null){
+                    stack.push(temp.right);
+                    root = temp.right;
+                }
+            }
+        }
+        return 0;
+    }
 }
