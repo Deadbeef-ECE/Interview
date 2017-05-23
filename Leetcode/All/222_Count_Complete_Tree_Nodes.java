@@ -42,6 +42,6 @@ public class Solution {
     
     private int leftHeight(TreeNode root){
         if(root == null)    return 0;
-        return 1+leftHeight(root.left);
+        return 1 + leftHeight(root.left);
     }
 }

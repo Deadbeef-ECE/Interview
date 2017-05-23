@@ -7,6 +7,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+// LevelOrder Solution
 public class Codec {
 
     // Encodes a tree to a single string.
@@ -56,6 +57,47 @@ public class Codec {
                 queue.offer(rChild);
             }
         }
+        return root;
+    }
+}
+
+// PreOrder Solution
+public class Codec {
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        if(root == null)
+            return "N";
+        StringBuilder sb = new StringBuilder();
+        preorder(root, sb);
+        sb.deleteCharAt(sb.length() - 1);
+        System.out.println(sb.toString());
+        return sb.toString();
+    }
+    
+    private void preorder(TreeNode root, StringBuilder sb){
+        if(root == null){
+            sb.append("N,");
+            return;
+        }
+        sb.append(root.val).append(",");
+        preorder(root.left, sb);
+        preorder(root.right, sb);
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        String[] arr = data.split("\\,");
+        Deque<String> nodes = new LinkedList<String>(Arrays.asList(arr));
+        return helper(nodes);
+    }
+    
+    private TreeNode helper(Deque<String> list){
+        if (list.size() == 0) return null;
+        String str = list.pop();
+        if (str.equals("N")) return null;
+        TreeNode root = new TreeNode(Integer.parseInt(str));
+        root.left = helper(list);
+        root.right = helper(list);
         return root;
     }
 }

@@ -43,11 +43,13 @@ public class Solution {
 }
 class IntervalComparator implements Comparator<Interval>{
     public int compare(Interval a, Interval b){
-        if(a.start > b.start && a.start >= b.end)   
+        // b | a
+        if(a.start > b.start && a.start >= b.end)
             return 1;
-        else if(a.start < b.start && a.end <= b.start)  
+        // a | b
+        else if(b.start > a.start && b.start >= a.end)
             return -1;
-        else 
+        else
             throw new RuntimeException();
     }
 }

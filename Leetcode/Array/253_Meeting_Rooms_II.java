@@ -16,12 +16,10 @@ public class Solution {
         new PriorityQueue<Interval>(intervals.length, new HeapComparator());
         heap.add(intervals[0]);
         for(int i = 1; i < intervals.length; i++){
-            Interval interval = heap.poll();
-            if (intervals[i].start >= interval.end)
-                interval.end = intervals[i].end;
-            else
-                heap.offer(intervals[i]);
-            heap.offer(interval);
+            Interval intv = heap.peek();
+            if(intv.end <= intervals[i].start)
+                heap.poll();
+            heap.offer(intervals[i]);
         }
         return heap.size();
     }

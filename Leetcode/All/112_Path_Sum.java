@@ -3,16 +3,12 @@ public class Solution {
     // O(1) space OR O(logn) space if consider recursion stack
     // O(n) time
     public boolean hasPathSum(TreeNode root, int sum) {
-        if(root == null)    return false;
-        return hasPathSumRec(root, sum);
-    }
-    
-    private boolean hasPathSumRec(TreeNode root, int sum){
-        if(root.left == null && root.right == null && sum == root.val)
+        if(root == null)   return false; 
+        if(root.left == null && root.right == null)
+            return sum == root.val;
+        if(root.left != null && hasPathSum(root.left, sum - root.val))
             return true;
-        if(root.left != null && hasPathSumRec(root.left, sum - root.val))
-            return true;
-        if(root.right != null && hasPathSumRec(root.right, sum - root.val))
+        if(root.right != null && hasPathSum(root.right, sum - root.val))
             return true;
         return false;
     }
@@ -42,5 +38,14 @@ public class Solution {
             }
         }
         return false;
+    }
+
+    // Recursion 超简洁版本：
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if(root == null)    return false;
+        int val = root.val;
+        if(root.left == null && root.right == null)
+            return sum == val;
+        return hasPathSum(root.left, sum - val) || hasPathSum(root.right, sum - val);
     }
 }

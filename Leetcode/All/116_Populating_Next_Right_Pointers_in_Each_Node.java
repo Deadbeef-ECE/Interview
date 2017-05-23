@@ -1,5 +1,5 @@
 public class Solution {
-    // BFS:
+    // BFS: 此方法通用 I/II
     public void connect(TreeLinkNode root) {
         if(root == null)    return;
         Queue<TreeLinkNode> queue = new LinkedList<TreeLinkNode>();
