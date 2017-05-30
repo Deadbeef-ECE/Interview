@@ -18,4 +18,25 @@ public class Solution {
         }
         return area;
     }
+    
+    // Two pointer:
+    // O(n) time, O(1) space
+    public int trap(int[] height) {
+        int secHight = 0;
+        int l = 0;
+        int r = height.length-1;
+        int area = 0;
+        while (l < r){
+            if (height[l] < height[r]){
+                secHight = Math.max(height[l], secHight);
+                area += secHight - height[l];//计算当前格的能装雨水的容量
+                l++;
+            } else {
+                secHight = Math.max(height[r], secHight);
+                area += secHight - height[r];
+                r--;
+            }
+        }
+        return area;
+    }
 }

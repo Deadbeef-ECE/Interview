@@ -30,12 +30,37 @@ public class Solution {
         }
     }
     
-    private boolean isValid(String s){
-        if(s.charAt(0) == '0' && s.length() > 1)
-            return false;
-        int val = Integer.valueOf(s);
-        if(val < 0 || val > 255)
-            return false;
-        return true;
+    public boolean isValid(String str){
+        int n = Integer.parseInt(str);
+        if(n > 0 && n <= 255)
+            return str.charAt(0) != '0';   
+        return n == 0 && str.length() == 1;
+    }
+
+    // Iteration:
+    public List<String> restoreIpAddresses(String s) {
+        List<String> ret = new LinkedList<String>();
+        if(s.length() < 4 || s.length() > 12)  return ret;
+        String str1 = "", str2 = "", str3 = "", str4 = "";
+        
+        for(int i = 1; i <= 3; i++){
+            str1 = s.substring(0, i);
+            if(!isValid(str1))   continue;
+            for(int j = i + 1; j <= i + 3 && j <= s.length(); j++){
+                str2 = s.substring(i, j);
+                if(!isValid(str2))   continue;
+                for(int k = j + 1; k <= j + 3 && k <= s.length() - 1; k++){
+                    if(s.length() - k > 3) 
+                        continue;
+                    str3 = s.substring(j, k);
+                    str4 = s.substring(k, s.length());
+                    if(isValid(str3) && isValid(str4)){
+                        String sol = str1 + "." + str2 + "." + str3 + "." + str4;
+                        ret.add(sol);
+                    }
+                }
+            }
+        }
+        return ret;
     }
 }

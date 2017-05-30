@@ -1,6 +1,14 @@
+/* 题意:
+ * 和243不同的是，要设计class，constructor的input是words list，其中API 
+ * shortest(String w1, String w2)会调用多次  (假设word1和word2不同且都在list里)
+ * 
+ * solution:
+ * HashMap
+ */
+
 public class WordDistance {
     private Map<String, List<Integer>> map;
-
+    // O(n) space, O(n^2) time
     public WordDistance(String[] words) {
         map = new HashMap<String, List<Integer>>();
         for(int i = 0; i < words.length; i++){

@@ -1,4 +1,22 @@
 public class Solution {
+    // Brute force:
+    // O(n) space, O()
+    public int countPrimes(int n) {
+        int cnt = 0;
+        for(int i = 2; i <= n; i++){
+            if(isPrime(i))  cnt++;
+        }
+        return cnt;
+    }
+    private boolean isPrime(int n){
+        if (n <= 1) return false;
+        for(int i = 2; i * i <= n; i++){
+            if(n % i == 0)  return false;
+        }
+        return true;
+    }
+
+    // Sieve method
     // O(n) space, O(n^2) time
     public int countPrimes(int n) {
         int ret = 0;

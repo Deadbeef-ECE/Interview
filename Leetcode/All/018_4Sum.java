@@ -1,4 +1,5 @@
 public class Solution {
+    // O(n^2) space, O(n^2) time
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> ret = new LinkedList<List<Integer>>();
         if(nums == null || nums.length < 4)
@@ -34,7 +35,7 @@ public class Solution {
                         // avoid duplicate index(same element use twice)
                         if(p1.contains(p2.get(0)) || p1.contains(p2.get(1)))
                             continue;
-                        
+
                         List<Integer> sol = new LinkedList<Integer>();
                         sol.add(nums[p1.get(0)]);
                         sol.add(nums[p1.get(1)]);

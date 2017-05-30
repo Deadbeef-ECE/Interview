@@ -34,4 +34,25 @@ public class Solution {
             }
         }
     }
+
+    // iteration:
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> ret = new LinkedList<List<Integer>>();
+        List<Integer> sol = new LinkedList<Integer>();
+        ret.add(sol);
+        
+        for(int i = 0; i < k; i++){
+            int size = ret.size();
+            for(int j = 0; j < size; j++){
+                sol = ret.remove(0);
+                int start = i == 0 ? 0 : sol.get(sol.size() - 1);
+                for(int num = start + 1; num <= i + n - k + 1; num++){
+                    List<Integer> next = new LinkedList<Integer>(sol);
+                    next.add(num);
+                    ret.add(next);
+                }
+            }
+        }
+        return ret;
+    }
 }

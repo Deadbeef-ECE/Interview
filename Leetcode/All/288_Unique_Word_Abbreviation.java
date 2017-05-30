@@ -1,15 +1,13 @@
 public class ValidWordAbbr {
-
-    private HashMap<String, List<String>> map;
-    
-    // O(n) space, O(n) time;
+    private HashMap<String, Set<String>> map;
+    // O(n) space, O(1) time
     public ValidWordAbbr(String[] dictionary) {
-        map = new HashMap<String, List<String>>();
+        map = new HashMap<String, Set<String>>();
         for(String str : dictionary){
             String abrStr = compress(str); 
             if(!map.containsKey(abrStr)){
-                List<String> list = new LinkedList<String>();
-                map.put(abrStr, list);
+                Set<String> set = new HashSet<String>();
+                map.put(abrStr, set);
             }
             map.get(abrStr).add(str);
         }
@@ -22,10 +20,10 @@ public class ValidWordAbbr {
         return ret;
     } 
 
-    // O(n) space, O(1) time;
+    // O(n) space, O(1) time
     public boolean isUnique(String word) {
         String str = compress(word);
-        if(!map.containsKey(str) || (map.get(str).get(0).equals(word) && map.get(str).size() == 1))
+        if(!map.containsKey(str) || (map.get(str).contains(word) && map.get(str).size() == 1))
             return true;
         return false;
     }

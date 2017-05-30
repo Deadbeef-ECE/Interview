@@ -28,7 +28,7 @@ public class Solution {
         }
         return false;
     }
-    
+
     // 更好理解的版本:
     public boolean search(int[] nums, int target) {
         if(nums == null || nums.length == 0)
@@ -55,4 +55,5 @@ public class Solution {
             }
         }
         return false;
+    }
 }

@@ -34,7 +34,7 @@ public class Solution {
         return minHeap.peek();
     }
 
-    // QuickSelect:
+    // Partition => [x <= p | p | x > p]:
     // O(1) space
     // O(n) time(average case), O(n^2) time(worest case)
     // why O(n) time?
@@ -70,4 +70,42 @@ public class Solution {
         nums[a] = nums[b];
         nums[b] = temp;
     }
+
+    // Partition => [x >= p | p | x < p]:
+    // O(1) space
+    // O(n) time(average case), O(n^2) time(worest case)
+    public int findKthLargest(int[] nums, int k) {
+        if(nums == null || nums.length == 0)
+            return 0;
+        return getKth(nums, 0, nums.length - 1, k);
+    }
+    
+    private int getKth(int[] nums, int lo, int hi, int k){
+        int pivotal = nums[lo];
+        int i = lo, j = hi;
+        while(i < j){
+            while(i < j && nums[j] < pivotal){
+                j--;
+            }
+            while(i < j && nums[i] >= pivotal){
+                i++;
+            }
+            swap(nums, i, j);
+        }
+        swap(nums, lo, j);
+        if(k == j + 1){
+            return pivotal;
+        }else if(k < j + 1){
+            return getKth(nums, lo, j - 1, k);
+        }else{
+            return getKth(nums, j + 1, hi, k);
+        }
+    }
+    
+    private void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
 }

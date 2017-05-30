@@ -20,4 +20,30 @@ public class Solution {
         }
         return dummy.next;
     }
+    // Split + Combine， 灵感来源于copy linked list with random pointer
+    // O(n) time, O(1) space
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null)
+            return head;
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode evenHead = head.next;
+        while(even != null){
+            odd.next = even.next;
+            odd = odd.next;
+            even.next = odd == null ? null : odd.next;
+            even = even.next;
+        }
+        odd = head;
+        even = evenHead;
+        while(even != null){
+            ListNode evenTmp = even.next;
+            ListNode oddTmp = odd.next;
+            even.next = odd;
+            odd.next = evenTmp == null ? odd.next : evenTmp;
+            odd = oddTmp;
+            even = evenTmp;
+        }
+        return evenHead;
+    }
 }

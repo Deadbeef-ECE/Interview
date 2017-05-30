@@ -79,3 +79,46 @@ public class Solution {
         return;
     }
 }
+// 清晰版本
+public class Solution {
+    public void reorderList(ListNode head) {
+        if(head == null || head.next == null || head.next.next == null)   
+            return;
+        ListNode slow = head;
+        ListNode fast = head;
+        // first part > second part if odd nodes
+        // first part = second part if even nodes
+        while(fast.next != null && fast.next.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        // Split
+        ListNode secondHead = slow.next;
+        slow.next = null;
+        slow = head;
+        ListNode node = reverse(secondHead);
+        // combine
+        while(node != null){
+            ListNode tmp = node.next;
+            node.next = slow.next;
+            slow.next = node;
+            slow = slow.next.next;
+            node = tmp;
+        }
+        return;
+    }
+    
+    public ListNode reverse(ListNode node){
+        if(node == null || node.next == null)
+            return node;
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = node;
+        while(cur != null){
+            ListNode tmp = cur.next;
+            cur.next = dummy.next;
+            dummy.next = cur;
+            cur = tmp;
+        }
+        return dummy.next;
+    }
+}

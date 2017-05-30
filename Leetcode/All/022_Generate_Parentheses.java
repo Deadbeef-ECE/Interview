@@ -28,4 +28,37 @@ public class Solution {
         doDFS(left + 1, right, n, path + "(", ret);
         doDFS(left, right + 1, n, path + ")", ret);
     }
+
+    // Iteration:
+    public List<String> generateParenthesis(int n) {
+        List<String> ret = new LinkedList<String>();
+        //记录左括号和右括号的差值
+        List<Integer> cnt = new LinkedList<Integer>();
+        if(n < 1)   return ret;
+        int l = 1, r = 0;
+        ret.add("(");
+        cnt.add(1);
+
+        for(int i = 1; i < 2 * n; i++){
+            int size = ret.size();
+            for(int k = 0; k < size; k++){
+                String tmp = ret.remove(0);
+                Integer count = cnt.remove(0);
+                // “()(((" tmp.length()  = 5, 
+                // num of ( = a, num of ) = b;
+                // a + b = tmp.length(), a - b = count;
+                // a = (a + b + a - b) / 2 = (tmp.length() + count) / 2;
+                if((tmp.length() + count)/2 < n){
+                    ret.add(tmp + "(");
+                    cnt.add(count + 1);
+                }
+                // a - b > 0就可以增加 ")"
+                if(count > 0){
+                    ret.add(tmp + ")");
+                    cnt.add(count - 1);
+                }
+            }
+        }
+        return ret;
+    }
 }
