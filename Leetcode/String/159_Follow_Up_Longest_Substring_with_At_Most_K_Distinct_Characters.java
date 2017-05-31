@@ -5,17 +5,15 @@ public class Solution {
             return 0;
         int[] table = new int[256];
         int start = 0;
-        int end = 0;
         int max = 1;
         for(int i = 0; i < s.length(); i++){
             int ch = s.charAt(i);
             table[ch]++;
-            end++;
             while(!isValid(table, k)){
                 table[s.charAt(start)]--;
                 start++;
             }
-            max = Math.max(end - start, max);
+            max = Math.max(end - start + 1, max);
         }
         return max;
     }
