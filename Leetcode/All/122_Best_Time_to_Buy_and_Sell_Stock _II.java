@@ -1,5 +1,5 @@
 public class Solution {
-    // O(1) space, O(n) time
+    // O(1) space, O(1) time
     public int maxProfit(int[] prices) {
         if(prices == null || prices.length <= 1)
             return 0;

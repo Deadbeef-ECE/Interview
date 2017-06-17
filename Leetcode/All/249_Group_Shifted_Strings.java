@@ -15,16 +15,13 @@ public class Solution {
         
         for(String str : strings){
             String feature = getFeature(str);
-            if(!map.containsKey(feature)){
-                List<String> list = new LinkedList<String>();
-                map.put(feature, list);
-            }
+            if(!map.containsKey(feature))
+                map.put(feature, new LinkedList<String>());
             map.get(feature).add(str);
         }
         
         for(String str : map.keySet()){
             List<String> list = map.get(str);
-            Collections.sort(list);
             ret.add(list);
         }
         return ret;
