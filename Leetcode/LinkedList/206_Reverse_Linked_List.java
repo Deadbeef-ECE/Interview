@@ -19,7 +19,8 @@ public class Solution {
     // O(1) space OR O(n) space if consider recursion stack
     // O(n) time
     public ListNode reverseList(ListNode node) {
-        if(node.next == null)   return node;
+        if(node == null || node.next == null)
+            return node;
         ListNode newHead = reverseList(node.next);
         node.next.next = node;
         node.next = null;

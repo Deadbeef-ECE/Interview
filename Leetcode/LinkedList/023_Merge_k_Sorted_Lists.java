@@ -9,7 +9,7 @@ public class Solution {
     }
     
     private ListNode merge(ListNode[] lists, int start, int end){
-        if(start >= end) return lists[start];
+        if(start == end) return lists[start];
         int mid = start + (end - start)/2;
         ListNode ret1 = merge(lists, start, mid);
         ListNode ret2 = merge(lists, mid+1, end);

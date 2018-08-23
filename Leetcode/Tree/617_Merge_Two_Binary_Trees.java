@@ -12,15 +12,15 @@ public class Solution {
         return merge(t1, t2);
     }
     
-    public TreeNode merge(TreeNode t1, TreeNode t2){
-        if(t1 == null && t2 == null)    return null;
-        int val = t1 == null ? 0 : t1.val;
-        val += t2 == null ? 0 : t2.val;
-        TreeNode t1_left = t1 == null ? null : t1.left, t1_right = t1 == null ? null : t1.right;
-        TreeNode t2_left = t2 == null ? null : t2.left, t2_right = t2 == null ? null : t2.right;
-        TreeNode curNode = new TreeNode(val);
-        curNode.left = merge(t1_left, t2_left);
-        curNode.right = merge(t1_right, t2_right);
-        return curNode;
+    private TreeNode merge(TreeNode t1, TreeNode t2){
+        if(t1 == null && t2 == null)  return null;
+        if(t1 == null)  return t2;
+        if(t2 == null)  return t1;
+        
+        int v = t1.val + t2.val;
+        TreeNode newNode = new TreeNode(v);
+        newNode.left = merge(t1.left, t2.left);
+        newNode.right = merge(t1.right, t2.right);
+        return newNode;
     }
 }

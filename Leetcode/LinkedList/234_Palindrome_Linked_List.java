@@ -1,6 +1,7 @@
 public class Solution {
     // Reverse List Solution:
     // O(1) space, O(n) time
+    // 此解法是要recover原list
     public boolean isPalindrome(ListNode head){
         ListNode dummy = new ListNode(0);
         dummy.next = head;
@@ -40,6 +41,34 @@ public class Solution {
         return head.next;
     }
 
+    // 不需要recover原list的简洁答案
+    public boolean isPalindrome(ListNode head) {
+        if(head == null || head.next == null)
+            return true;
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode left = head;
+        ListNode right = reverse(slow.next);
+        while(left != null && right != null){
+            if(left.val != right.val)   return false;
+            left = left.next;
+            right = right.next;
+        }
+        
+        return true;
+    }
+    
+    private ListNode reverse(ListNode node){
+        if(node.next == null)   return node;
+        ListNode newHead = reverse(node.next);
+        node.next.next = node;
+        node.next = null;
+        return newHead;
+    }
     // HashMap Brute-Force:
     // O(n) space, O(n) time
     public boolean isPalindrome(ListNode head) {

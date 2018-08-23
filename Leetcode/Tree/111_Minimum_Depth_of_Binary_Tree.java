@@ -16,31 +16,22 @@ public class Solution {
     // O(n) time, n is TreeNode number before reaching the "highest" leaf
     public int minDepth2(TreeNode root) {
         if(root == null)    return 0;
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.add(root);
-        int last = 1;
-        int depth = 1;
-        int num = 0;
-        
-        while(!queue.isEmpty()){
-            TreeNode cur = queue.poll();
-            if(cur.left == null && cur.right == null)
-                return depth;
-            last--;
-            if(cur.left != null){
-                queue.add(cur.left);
-                num++;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        int level = 1;
+        while(!q.isEmpty()){
+            int size = q.size();
+            for(int i = 0; i < size; i++){
+                TreeNode cur = q.poll();
+                if(cur.left == null && cur.right == null)
+                    return level;
+                if(cur.left != null)
+                    q.add(cur.left);
+                if(cur.right != null)
+                    q.add(cur.right);
             }
-            if(cur.right != null){
-                queue.add(cur.right);
-                num++;
-            }
-            if(last == 0){
-                last = num;
-                num = 0;
-                depth++;
-            }
+            if(!q.isEmpty())    level++;
         }
-        return depth;
+        return level;
     }
 }

@@ -14,29 +14,26 @@ public class Solution {
     // O(n) time, n is TreeNode number in totoal
     public int maxDepth2(TreeNode root) {
         if(root == null)    return 0;
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        int level = 1;
         queue.add(root);
-        int last = 1;
-        int num = 0;
-        int depth = 1;
         
         while(!queue.isEmpty()){
-            TreeNode cur = queue.poll();
-            last--;
-            if(cur.left != null){
-                num++;
-                queue.add(cur.left);
+            int size = queue.size();
+            int num = 0;
+            while(size-- > 0){
+                TreeNode tmp = queue.poll();
+                if(tmp.left != null){
+                    queue.add(tmp.left);
+                    num++;
+                }
+                if(tmp.right != null){
+                    queue.add(tmp.right);
+                    num++;
+                }
             }
-            if(cur.right != null){
-                num++;
-                queue.add(cur.right);
-            }
-            if(last == 0 && num != 0){
-                depth++; 
-                last = num;
-                num = 0;
-            }
+            if(num != 0)    level++;
         }
-        return depth;
+        return level;
     }
 }

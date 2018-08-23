@@ -10,7 +10,7 @@ public class Solution {
             int size = queue.size();
             for(int i = 0; i < size; i++){
                 TreeNode temp = queue.poll();
-                if(i == size-1)
+                if(i == size - 1)
                     ret.add(temp.val);
                 if(temp.left != null)
                     queue.add(temp.left);

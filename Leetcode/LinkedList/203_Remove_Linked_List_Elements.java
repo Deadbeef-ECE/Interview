@@ -1,20 +1,19 @@
 public class Solution {
     // O(1) space, O(n) time
     public ListNode removeElements(ListNode head, int val) {
-        if(head == null)    return head;
+        if(head == null)    return null;
         ListNode dummy = new ListNode(-1);
-        ListNode cur = head;
-        ListNode prev = dummy;
-        while(cur != null){
-            if(cur.val == val){
+        ListNode cur = dummy;
+        while(head != null) {
+            if(head.val == val) {
+                head = head.next;
+            } else {
+                cur.next = head;
                 cur = cur.next;
-            }else{
-                prev.next = cur;
-                cur = cur.next;
-                prev = prev.next;
+                head = head.next;
             }
         }
-        prev.next = cur;
+        cur.next = head;
         return dummy.next;
     }
 }

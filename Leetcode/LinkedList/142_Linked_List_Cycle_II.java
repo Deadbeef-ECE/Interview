@@ -12,7 +12,7 @@ public class Solution {
             if(slow.equals(fast))
                 break;
         }
-        if(fast == null || fast.next == null)
+        if(fast == null)
             return null;
         slow = head;
         while(fast != slow){
