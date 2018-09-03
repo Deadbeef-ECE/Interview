@@ -36,23 +36,25 @@ public class Solution {
     }
 
     // iteration:
-    public List<List<Integer>> combine(int n, int k) {
-        List<List<Integer>> ret = new LinkedList<List<Integer>>();
-        List<Integer> sol = new LinkedList<Integer>();
-        ret.add(sol);
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> list = new LinkedList<>();
+        if(nums == null || nums.length == 0)    return new LinkedList<>();
+        List<Integer> sol = new LinkedList<>();
+        list.add(sol);
         
-        for(int i = 0; i < k; i++){
-            int size = ret.size();
+        for(int i = 0; i < nums.length; i++){
+            int size = list.size();
             for(int j = 0; j < size; j++){
-                sol = ret.remove(0);
-                int start = i == 0 ? 0 : sol.get(sol.size() - 1);
-                for(int num = start + 1; num <= i + n - k + 1; num++){
-                    List<Integer> next = new LinkedList<Integer>(sol);
-                    next.add(num);
-                    ret.add(next);
+                List<Integer> cur = list.remove(0);
+                for(int k = 0; k < nums.length; k++){
+                    if(!cur.contains(nums[k])){
+                        List<Integer> next = new LinkedList<>(cur);
+                        next.add(nums[k]);
+                        list.add(next);
+                    }
                 }
             }
         }
-        return ret;
+        return list;
     }
 }

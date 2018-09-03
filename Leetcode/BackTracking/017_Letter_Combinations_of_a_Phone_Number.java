@@ -22,31 +22,22 @@ public class Solution {
     // 但调用完会被回收, 所以total space还是n, 其原理跟recursion stack类似
 
     public List<String> letterCombinations(String digits) {
-        List<String> ret = new LinkedList<String>();
-        if(digits == null || digits.length() == 0)    
-            return ret;
-        String[] table = {"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-        StringBuilder path = new StringBuilder();
-
-        doDFS(digits, 0, path, ret, table);
-
+        String[] strs = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        List<String> ret = new LinkedList<>();
+        if(digits.isEmpty())    return ret;
+        dfs(digits, 0, "", strs, ret);
         return ret;
     }
-
-    private void doDFS(String digits, int pos, StringBuilder path, 
-        List<String> ret, String[] table){
-        if(pos == digits.length()){
-            // O(n) space and O(n) time for toString() API and called for 
-            // each solution, n is the length of input digits
-            ret.add(path.toString());
+    
+    private void dfs(String digit, int pos, String str, String[] strs, List<String> ret){
+        if(pos == digit.length()){
+            ret.add(str);
             return;
         }
+        int idx = digit.charAt(pos) - '2';
+        for(int i = 0; i < strs[idx].length(); i++){
+            dfs(digit, pos + 1, str + strs[idx].charAt(i), strs, ret);
         
-        String letters = table[digits.charAt(pos) - '2'];
-        for(int i = 0; i < letters.length(); i++){
-            path.append(letters.charAt(i));
-            doDFS(digits, pos + 1, path, ret, table);
-            path.deleteCharAt(path.length() - 1);
         }
     }
 

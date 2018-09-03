@@ -17,31 +17,24 @@ public class Solution {
     // v is the number of nodes
     // in-dgree: one node may has been visited for serveral times
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
-        if(node == null)
-            return node;
-
-        Queue<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
-        HashMap<UndirectedGraphNode, UndirectedGraphNode> map = new 
-                                    HashMap<UndirectedGraphNode, UndirectedGraphNode>();
-
+        if(node == null)    return null;
+        Queue<UndirectedGraphNode> q = new LinkedList<>();
+        Map<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<>();
         UndirectedGraphNode newNode = new UndirectedGraphNode(node.label);
-        queue.add(node);
         map.put(node, newNode);
+        q.add(node);
 
-        while(!queue.isEmpty()){
-            UndirectedGraphNode cur = queue.poll();
-            UndirectedGraphNode curClone = map.get(cur);
-            List<UndirectedGraphNode> neighbors = cur.neighbors;
+        while(!q.isEmpty()){
+            UndirectedGraphNode cur = q.poll();
+            UndirectedGraphNode copy = map.get(cur);
+            List<UndirectedGraphNode> nb = cur.neighbors;
             
-            for(UndirectedGraphNode v : neighbors){
-                if(!map.containsKey(v)){
-                    UndirectedGraphNode copy = new UndirectedGraphNode(v.label);
-                    map.put(v, copy);
-                    curClone.neighbors.add(copy);
-                    queue.add(v);
-                }else{
-                    curClone.neighbors.add(map.get(v));
+            for(UndirectedGraphNode n : nb){
+                if(!map.containsKey(n)){
+                    map.put(n, new UndirectedGraphNode(n.label));
+                    q.add(n);
                 }
+                copy.neighbors.add(map.get(n));
             }
         }
         return newNode;

@@ -43,4 +43,26 @@ public class Solution {
         }
         inorder(root.right, target, minHeap, map);
     }
+
+    // Deque + inorder解法
+    public List<Integer> closestKValues(TreeNode root, double target, int k) {
+        LinkedList<Integer> list = new LinkedList<>();
+        inorder(root, list, target, k);
+        return list;
+    }
+    
+    private void inorder(TreeNode root, LinkedList<Integer> list, double target, int k){
+        if(root == null)    return;
+
+        inorder(root.left, list, target, k);
+        if (list.size() == k) {
+            if (Math.abs(list.getFirst() - target) < Math.abs(root.val - target)) {
+                return;
+            } else {
+                list.removeFirst();
+            }
+        }
+        list.add(root.val);
+        inorder(root.right, list, target, k);
+    }
 }

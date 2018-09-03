@@ -1,24 +1,19 @@
 public class Solution {
     // O(1) space, O(logn) avg time, O(n) worest case
-    public int findMin(int[] arr) {
-        if(arr == null || arr.length == 0)
-            return 0;
-        int lo = 0;
-        int hi = arr.length - 1;
-        while(lo < hi){
-            int mid = lo + (hi - lo)/2;
-            // right part is sorted
-            if(arr[mid] < arr[hi])
-                hi = mid;
-            // left part is sorted or cannot determine
-            else{
-                if(arr[mid] == arr[hi]){
-                    hi--;   continue;
-                }
-                lo = mid + 1;
+    public int findMin(int[] nums) {
+        int l = 0, r = nums.length - 1;
+        
+        while(l <= r){
+            int mid = l + (r - l) / 2;
+            if(mid != r && nums[mid] == nums[r]){
+                r--;
+            }else if(nums[mid] < nums[r]){
+                r = mid;
+            }else{
+                l = mid + 1;
             }
         }
-        return arr[lo];
+        return nums[r];
     }
     
     // 偷懒解法， 不推荐，如果让你返回min的index，此解法废了

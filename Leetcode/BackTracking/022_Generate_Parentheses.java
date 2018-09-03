@@ -8,34 +8,27 @@ public class Solution {
     // O(n) space:
     // path的最大长度也是recursion stack的最高高度, 为2n. 
     public List<String> generateParenthesis(int n) {
-        List<String> ret = new LinkedList<String>();
-        if(n == 0)  return ret;
-        String path = "";
-        doDFS(0, 0, n, path, ret);
-        return ret;
+        List<String> list = new LinkedList<>();
+        dfs("", n, 0, 0, list);
+        return list;
     }
     
-    private void doDFS(int left, int right, int n, String path, List<String> ret){
+    private void dfs(String s, int n, int left, int right, List<String> list){
         if(right > left)    return;
-        if(left == n && right == n){
-            ret.add(path);
-            return;
-        }
-        if(left == n){
-            doDFS(left, right + 1, n, path + ")", ret);
-            return;
-        }
-        doDFS(left + 1, right, n, path + "(", ret);
-        doDFS(left, right + 1, n, path + ")", ret);
+        if(left > n || right > n)    return;
+        if(left == right && left == n)
+            list.add(s);
+        dfs(s + "(", n, left + 1, right, list);
+        dfs(s + ")", n, left, right + 1, list);
     }
 
     // Iteration:
     public List<String> generateParenthesis(int n) {
-        List<String> ret = new LinkedList<String>();
+        List<String> ret = new LinkedList<String>();        
+        if(n < 1)   return ret;
         //记录左括号和右括号的差值
         List<Integer> cnt = new LinkedList<Integer>();
-        if(n < 1)   return ret;
-        int l = 1, r = 0;
+
         ret.add("(");
         cnt.add(1);
 
@@ -43,7 +36,7 @@ public class Solution {
             int size = ret.size();
             for(int k = 0; k < size; k++){
                 String tmp = ret.remove(0);
-                Integer count = cnt.remove(0);
+                int count = cnt.remove(0);
                 // “()(((" tmp.length()  = 5, 
                 // num of ( = a, num of ) = b;
                 // a + b = tmp.length(), a - b = count;
