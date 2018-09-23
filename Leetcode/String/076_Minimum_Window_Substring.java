@@ -33,4 +33,44 @@ public class Solution {
         }
         return ret;
     }
+
+    // 模板解法
+    // https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
+    public String minWindow(String s, String t) {
+        Map<Character, Integer> map = new HashMap<>();
+        for(int i = 0; i < t.length(); i++){
+            char c = t.charAt(i);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            
+        }
+        
+        int count = map.size();
+        int start = 0, end = 0;
+        int head = 0;
+        int len = Integer.MAX_VALUE;
+        while(end < s.length()){
+            char c = s.charAt(end);
+            if(map.containsKey(c)){
+                map.put(c, map.get(c) - 1);
+                if(map.get(c) == 0)
+                    count--;
+            }
+            end++;
+            while(count == 0){
+                char a = s.charAt(start);
+                if(map.containsKey(a)){
+                    map.put(a, map.get(a) + 1);
+                    if(map.get(a) > 0)
+                        count++;
+                }
+                if(end - start < len){
+                    len = end - start;
+                    head = start;
+                }
+                start++;
+            }
+        }
+        if(len == Integer.MAX_VALUE)    return "";
+        return s.substring(head, head + len);
+    }
 }

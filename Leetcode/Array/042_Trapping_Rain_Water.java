@@ -22,21 +22,23 @@ public class Solution {
     // Two pointer:
     // O(n) time, O(1) space
     public int trap(int[] height) {
-        int secHight = 0;
-        int l = 0;
-        int r = height.length-1;
-        int area = 0;
-        while (l < r){
-            if (height[l] < height[r]){
-                secHight = Math.max(height[l], secHight);
-                area += secHight - height[l];//计算当前格的能装雨水的容量
+        if(height == null || height.length < 2)
+            return 0;
+        
+        int lMax = 0, rMax = 0;
+        int l = 0, r = height.length - 1;
+        int num = 0;
+        while(l < r){
+            lMax = Math.max(lMax, height[l]);
+            rMax = Math.max(rMax, height[r]);
+            if(height[l] < height[r]){
+                num += lMax - height[l];
                 l++;
-            } else {
-                secHight = Math.max(height[r], secHight);
-                area += secHight - height[r];
+            }else{
+                num += rMax - height[r];
                 r--;
             }
         }
-        return area;
+        return num;
     }
 }

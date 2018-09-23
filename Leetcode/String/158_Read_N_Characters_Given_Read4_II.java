@@ -7,28 +7,21 @@ public class Solution extends Reader4 {
      * @param n   Maximum number of characters to read
      * @return    The number of characters read
      */
-    private Queue<Character> queue = new LinkedList<Character>();
+    int buffPtr = 0;
+    int buffCnt = 0;
+    char[] tmp = new char[4];
     public int read(char[] buf, int n) {
-        char[] buffer = new char[4];
-        int cnt = 0;
-        int left = queue.size();
-        // maybe n is less than 4 and left also
-        int get = Math.min(n, left);
-        for(; cnt < get; cnt++)
-            buf[cnt] = queue.poll();
-            
-        // if not enough only getting from the queue
-        while(cnt < n){
-            int read = read4(buffer);
-            int temp = Math.min(read, n - cnt);
-            for(int i = 0; i < temp; i++)
-                buf[cnt + i] = buffer[i];
-            cnt += temp;
-            // if we won't use all of chars from read4 this time
-            while(temp < read)  
-                queue.add(buffer[temp++]);
-            if(read < 4)    break;
+        int idx = 0;
+        while(idx < n){
+            if(buffPtr == 0){
+                buffCnt = read4(tmp);
+            }
+            if(buffCnt == 0)    break;
+            while(idx < n && buffPtr < buffCnt)
+                buf[idx++] = tmp[buffPtr++];
+            if(buffPtr == buffCnt)
+                buffPtr = 0;
         }
-        return cnt;
+        return idx;
     }
 }

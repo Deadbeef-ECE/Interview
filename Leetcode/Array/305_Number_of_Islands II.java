@@ -1,62 +1,69 @@
-public class Solution {
-    int[] dx = {0, 0, 1, -1};
-    int[] dy = {-1, 1, 0, 0};
+class Solution {
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
-        List<Integer> ret = new LinkedList<Integer>();
-        UF uf = new UF(m, n);
-        for(int i = 0 ; i < positions.length; i++){
-            int[] pair = positions[i];
-            int x = pair[0];
-            int y = pair[1];
-            uf.set(x, y);
-            for(int j = 0; j < 4; j++){
-                int r = x + dx[j];
-                int c = y + dy[j];
-                uf.union(r, c, x, y);
+        List<Integer> list = new ArrayList<>();
+        UF uf = new UF(m * n + 1);
+        int[] dx = {0, 0, 1, -1};
+        int[] dy = {1, -1, 0, 0};
+        
+        for(int[] pos : positions){
+            int i = pos[0], j = pos[1];
+            int idx = i * n + j;
+            uf.set(idx);
+            for(int k = 0; k < 4; k++){
+                int x = i + dx[k];
+                int y = j + dy[k];
+                int next = x * n + y;
+                if(x >= 0 && y >= 0 && x < m && y < n && uf.root(next) != (m * n)){
+                    uf.union(next, idx);
+                }
             }
-            ret.add(uf.size());
+            list.add(uf.getCount());
         }
-        return ret;
+        return list;
     }
 }
 
 class UF{
-    private int[] uf;
-    private int m, n;
-    private int size;
-    public UF(int m, int n){
-        this.m = m;
-        this.n = n;
-        uf = new int[m * n];
-        Arrays.fill(uf, -1);
+    int[] parent;
+    int[] size;
+    int count;
+    public UF(int n){
+        parent = new int[n];
+        size = new int[n];
+        for(int i = 0; i < n; i++){
+            parent[i] = n - 1;
+            size[i] = 1;
+        }
+        count = 0;
     }
     
-    public void set(int x, int y){
-        uf[n * x + y] = n * x + y;
-        size += 1;
+    public int getCount(){
+        return count;
     }
     
-    public void union(int x0, int y0, int x1, int y1){
-        if(x0 < 0 || x0 >= m || y0 < 0 || y0 >= n)
-            return;
-        int i = find(x0, y0);
-        int j = find(x1, y1);
+    public void set(int n){
+        parent[n] = n;
+        count++;
+    }
+    public int root(int p){
+        while(p != parent[p]){
+            parent[p] = parent[parent[p]];
+            p = parent[p];
+        }
+        return p;
+    }
+    
+    public void union(int p, int q){
+        int i = root(p);
+        int j = root(q);
         if(i == j)  return;
-        if(i == -1)  return;
-        size--;
-        uf[i] = j;
-    }
-    
-    public int find(int x, int y){
-        if(x < 0 || x >= m || y < 0 || y >= n)
-            return -1;
-        int idx = x * n + y;
-        while(idx >= 0 && idx != uf[idx])
-            idx = uf[idx];
-        return idx;
-    }
-    
-    public int size(){
-        return size;
+        if(size[i] < size[j]){
+            size[j] += size[i];
+            parent[i] = j;
+        }else{
+            size[i] += size[j];
+            parent[j]  = i;
+        }
+        count--; 
     }
 }

@@ -43,4 +43,26 @@ public class Solution {
         }
         return k >= v;
     }
+
+    // sliding window模板解法
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        int start = 0, end = 0;
+        int count = 0, dist = 0;
+        
+        while(end < s.length()){
+            char c = s.charAt(end);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            if(map.get(c) == 1)  count++;
+            end++;
+            while(count > 2){
+                char a = s.charAt(start);
+                map.put(a, map.get(a) - 1);
+                if(map.get(a) == 0) count--;
+                start++;
+            }
+            dist = Math.max(dist, end - start);
+        }
+        return dist;
+    }
 }

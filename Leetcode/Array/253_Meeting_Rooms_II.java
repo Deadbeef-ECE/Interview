@@ -11,28 +11,41 @@ public class Solution {
     public int minMeetingRooms(Interval[] intervals) {
         if(intervals == null || intervals.length == 0)
             return 0;
-        Arrays.sort(intervals, new SortComparator());
-        PriorityQueue<Interval> heap = 
-        new PriorityQueue<Interval>(intervals.length, new HeapComparator());
-        heap.add(intervals[0]);
+        Arrays.sort(intervals, (a, b) -> (a.start - b.start));
+        
+        PriorityQueue<Interval> pq = new PriorityQueue<Interval>((a, b) -> (a.end - b.end));
+        pq.add(intervals[0]);
         for(int i = 1; i < intervals.length; i++){
-            Interval intv = heap.peek();
-            if(intv.end <= intervals[i].start)
-                heap.poll();
-            heap.offer(intervals[i]);
+            Interval cur = pq.peek();
+            if(intervals[i].start >= cur.end)   pq.poll();
+            pq.offer(intervals[i]);
         }
-        return heap.size();
+        
+        return pq.size();
     }
-}
 
-class SortComparator implements Comparator<Interval>{
-    public int compare(Interval a, Interval b){
-        return a.start - b.start;
-    }
-}
-
-class HeapComparator implements Comparator<Interval>{
-    public int compare(Interval a, Interval b){
-        return a.end - b.end;
+    // 最优解
+    public int minMeetingRooms(Interval[] intervals) {
+        int n = intervals.length;
+        int[] sT = new int[n];
+        int[] eT = new int[n];
+        int idx = 0;
+        for (Interval interval : intervals) {
+            sT[idx] = interval.start;
+            eT[idx] = interval.end;
+            idx++;
+        }
+        Arrays.sort(sT);
+        Arrays.sort(eT);
+        int count = 0;
+        int endPtr = 0;
+        for (int i = 0; i < n; i++) {
+            if (sT[i] < eT[endPtr]) {
+                count ++;
+            } else {
+                endPtr++;
+            }
+        }
+        return count;
     }
 }
