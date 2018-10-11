@@ -45,27 +45,30 @@ public class Solution {
     }
 
     // 普通Backtracking 解法，大数据超时
-    public List<String> wordBreakII(String s, Set<String> wordDict) {
-        List<String> ret = new LinkedList<String>();
-        if(s == null || s.length() == 0)
-            return ret;
-        doDFS(s, 0, s.length(), wordDict, "", ret);
-        return ret;
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        List<String> res = new LinkedList<>();
+        if(s == null || s.length() == 0 || wordDict.size() == 0)
+            return res;
+        Set<String> set = new HashSet<>(wordDict);
+        
+        StringBuilder sb = new StringBuilder();
+        dfs(0, sb, s, set, res);
+        return res;
     }
-    private void doDFS(String s, int start, int end, 
-                       Set<String> wordDict, String str, List<String> ret){
-        if(start >= end){
-            ret.add(str);
+    
+    private void dfs(int pos, StringBuilder path, String s, Set<String> set, List<String> res){
+        if(pos == s.length()){
+            String sol = path.toString().trim();
+            res.add(sol);
             return;
         }
-        
-        for(int i = start; i <= end; i++){
-            String subStr = s.substring(start, i);
-            if(wordDict.contains(subStr)){
-                str+= subStr;
-                if(i != end)
-                    str+= " ";
-                doDFS(s, i, end, wordDict, str, ret);
+        for(String str : set){
+            int end = pos + str.length();
+            if(end <= s.length() && s.startsWith(str, pos)){
+                int n = path.length();
+                path.append(str + " ");
+                dfs(end, path, s, set, res);
+                path.delete(n, path.length());
             }
         }
     }

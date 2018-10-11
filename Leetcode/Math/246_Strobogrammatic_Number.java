@@ -11,29 +11,21 @@ public class Solution {
     // Two pointer solution:
     // O(1) space, O(n) time
     public boolean isStrobogrammatic(String num) {
-        int start = 0;
-        int end = num.length() - 1;
-        while (start <= end) {
-            switch(num.charAt(start)) {
-                case '0':
-                case '1':
-                case '8':
-                    if (num.charAt(end) != num.charAt(start))   
-                        return false;
-                    break;
-                case '6':
-                    if (num.charAt(end) != '9') 
-                        return false;
-                    break;
-                case '9':
-                    if (num.charAt(end) != '6') 
-                        return false;
-                    break;
-                default:
-                    return false;
-            }
-            start++; end--;
+        int l = 0, r = num.length() - 1;
+        while(l <= r){
+            char a = num.charAt(l++);
+            char b = num.charAt(r--);
+            if(!isStro(a, b))   return false;
         }
         return true;
+    }
+    
+    private boolean isStro(char a, char b){
+        if(a == '6')    return b == '9';
+        if(a == '9')    return b == '6';
+        if(a == '1')    return b == '1';
+        if(a == '8')    return b == '8';
+        if(a == '0')    return b == '0';
+        return false;
     }
 }

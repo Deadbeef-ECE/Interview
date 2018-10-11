@@ -1,46 +1,43 @@
 class Solution {
-    String ret = "";
+    String res = "";
     int minDiff = Integer.MAX_VALUE;
     public String nextClosestTime(String time) {
         char[] arr = time.toCharArray();
-        int target = Integer.parseInt(time.substring(0, 2)) * 60 + Integer.parseInt(time.substring(3,5));
-        dfs("", arr, target);
-        return ret;
+        int target = Integer.parseInt(time.substring(0, 2)) * 60 + Integer.parseInt(time.substring(3, 5));
+        StringBuilder sb = new StringBuilder();
+        dfs(sb, arr, target);
+        return res;
     }
     
-    private void dfs(String s, char[] arr, int target){
-        if(s.length() == 4){
-            String hour = s.substring(0, 2);
-            String minute = s.substring(2, 4);
+    private void dfs(StringBuilder sb, char[] arr, int target){
+        if(sb.length() == 4){
+            String hour = sb.substring(0, 2);
+            String minute = sb.substring(2, 4);
             int h = Integer.parseInt(hour);
             int m = Integer.parseInt(minute);
+            if(h > 23 || m > 59)    return;
             int cur = h * 60 + m;
-            if(h < 0 || h > 23 || m < 0 || m > 59)  return;
-            if(cur == target){
-                int diff = 24 * 60;
-                if(diff < minDiff){
-                    minDiff = diff;
-                    ret = hour + ":" + minute;
-                }
-            }
-            else if(cur < target){
-                int left = 24 * 60 - target;
-                if(left + cur < minDiff){
-                    minDiff = left + cur;
-                    ret = hour + ":" + minute;
-                }
-            }else{
-                if(cur - target < minDiff){
-                    minDiff = cur - target;
-                    ret = hour + ":" + minute;
-                }
+            int diff = 0;
+            if(cur == target)
+                diff = 24 * 60;
+            else if(cur < target)
+                diff = 24 * 60 - target + cur;
+            else if (cur > target)
+                diff = cur - target;
+            
+            if(diff < minDiff){
+                minDiff = diff;
+                res = hour + ":" + minute;
             }
             return;
         }
         
-        for(int i = 0; i < 5; i++){
-            if(arr[i] == ':') continue;
-            dfs(s + arr[i], arr, target);
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] != ':'){
+                sb.append(arr[i]);
+                dfs(sb, arr, target);
+                sb.deleteCharAt(sb.length() - 1);
+            }
         }
     }
 }

@@ -1,28 +1,28 @@
 // DP reference: 
-// https://leetcodenotes.wordpress.com/2013/10/19/leetcode-longest-valid-parentheses-%E8%BF%99%E7%A7%8D%E6%8B%AC%E5%8F%B7%E7%BB%84%E5%90%88%EF%BC%8C%E6%9C%80%E9%95%BF%E7%9A%84valid%E6%8B%AC%E5%8F%B7%E7%BB%84%E5%90%88%E6%9C%89%E5%A4%9A/
+// https://leetcode.com/problems/longest-valid-parentheses/discuss/14278/Two-Java-solutions-with-explanation.-Stack-and-DP.-Short-and-easy-to-understand.
 public class Solution {
     // 一维DP:
     // O(n) space, O(n) time;
 
     public int longestValidParentheses(String s) {
-        if(s == null || s.length() < 2) return 0;
-        int len = s.length();
-        int[] dp = new int[len];
-        dp[len - 1] = 0;
+        if(s == null || s.length() == 0)
+            return 0;
+        int n = s.length();
+        int[] dp = new int[n];
+        int left = 0;
         int max = 0;
-        
-        for(int i = len - 2; i >= 0; i--){
-            if(s.charAt(i) == ')'){
-                dp[i] = 0;
-            }else{                          // i    j
-                int j = i + 1 + dp[i + 1];  // (()())
-                if(j < len && s.charAt(j) == ')'){
-                    dp[i] = dp[i+1] + 2;
-                    if(j + 1 < len && s.charAt(j) == ')') // ()()
-                        dp[i] += dp[j+1];
+        for(int i = 0; i < n; i++){
+            if(s.charAt(i) == '('){
+                left++;
+            }else{
+                if(left > 0){
+                    left--;
+                    dp[i] = dp[i - 1] + 2;
+                    if(i >= dp[i])  dp[i] += dp[i - dp[i]];
                 }
+                if(dp[i] > max)
+                    max = dp[i];
             }
-            max = Math.max(max, dp[i]);
         }
         return max;
     }

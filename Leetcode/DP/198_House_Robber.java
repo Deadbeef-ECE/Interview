@@ -13,17 +13,18 @@ public class Solution {
     }
     
     // 一维DP空间压缩， O(1) space, O(n) time
-    public int rob2(int[] nums) {
-        int a = 0, b = 0;
-        for(int i = 0; i < nums.length; i++){
-            if(i % 2 == 0){
-                a += nums[i];
-                a = Math.max(a, b);
-            }else{
-                b += nums[i];
-                b = Math.max(a, b);
-            }
+    public int rob(int[] nums) {
+        if(nums == null || nums.length == 0)
+            return 0;
+        if(nums.length == 1)
+            return nums[0];
+        int prev = 0;
+        int curMax = nums[0];
+        for(int i = 1; i < nums.length; i++){
+            int temp = prev + nums[i];
+            prev = curMax;
+            curMax = Math.max(temp, prev);
         }
-        return Math.max(a, b);
+        return curMax;
     }
 }

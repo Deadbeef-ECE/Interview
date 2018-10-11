@@ -1,15 +1,17 @@
 public class Solution {
     // O(1) space, O(n) time
     public int romanToInt(String s) {
-        int ret = 0;
+        int res = 0;
         for(int i = 0; i < s.length(); i++){
-            if(i > 0 && char2num(s.charAt(i)) > char2num(s.charAt(i-1)))
-                ret += char2num(s.charAt(i)) - 2 * char2num(s.charAt(i-1));
-            else
-                ret += char2num(s.charAt(i));
+            char c = s.charAt(i);
+            if(i > 0 && char2num(s.charAt(i - 1)) < char2num(c)){
+                res -= 2 * char2num(s.charAt(i - 1));
+            }
+            res += char2num(c);
         }
-        return ret;
+        return res;
     }
+    
     
     private int char2num(char c){
         switch(c){

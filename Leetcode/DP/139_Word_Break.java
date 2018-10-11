@@ -15,3 +15,27 @@ public class Solution {
         return possible[len];
     }
 }
+
+// DFS
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if(s == null || s.length() == 0)
+            return false;
+        boolean[] visited = new boolean[s.length() + 1];
+        return dfs(visited, 0, s, wordDict);
+    }
+    
+    private boolean dfs(boolean[] visited, int idx, String s, List<String> wordDict){
+        if(idx == s.length())
+            return true;
+        visited[idx] = true;
+        for(String str : wordDict){
+            int end = idx + str.length();
+            if(end <= s.length() && s.startsWith(str, idx) && !visited[end]){
+                if(dfs(visited, end, s, wordDict))
+                    return true;
+            }
+        }
+        return false;
+    }
+}

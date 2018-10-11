@@ -10,46 +10,30 @@
 public class Solution {
     // O(1) space, O(nlogn)time
     public boolean canAttendMeetings(Interval[] intervals) {
-        if(intervals.length == 0)
-            return true;
-        Arrays.sort(intervals, new intervalComparator());
-        int end = intervals[0].end;
+        Arrays.sort(intervals, (a, b) -> (a.start - b.start));
         for(int i = 1; i < intervals.length; i++){
-            if(intervals[i].start < end)
+            if(intervals[i].start < intervals[i-1].end)
                 return false;
-            end = intervals[i].end;
-        } 
-        return true;
-    }
-}
-
-class intervalComparator implements Comparator<Interval>{
-    public int compare(Interval a, Interval b){
-        return a.start - b.start;
-    }
-}
-
-// Better Average running time with exception
-public class Solution {
-    public boolean canAttendMeetings(Interval[] intervals) {
-        if(intervals == null)   return true;
-        try{
-            Arrays.sort(intervals, new IntervalComparator());
-        }catch(Exception E){
-            return false;
         }
         return true;
     }
 }
-class IntervalComparator implements Comparator<Interval>{
-    public int compare(Interval a, Interval b){
-        // b | a
-        if(a.start > b.start && a.start >= b.end)
-            return 1;
-        // a | b
-        else if(b.start > a.start && b.start >= a.end)
-            return -1;
-        else
-            throw new RuntimeException();
+
+// Beats 93%
+class Solution {
+    public boolean canAttendMeetings(Interval[] intervals) {
+        int[] s = new int[intervals.length];
+        int[] e = new int[intervals.length];
+        for(int i = 0; i < intervals.length; i++){
+            s[i] = intervals[i].start;
+            e[i] = intervals[i].end;
+        }
+        Arrays.sort(s);
+        Arrays.sort(e);
+        for(int i = 1; i < intervals.length; i++){
+            if(s[i] < e[i - 1])
+                return false;
+        }
+        return true;
     }
 }
