@@ -41,7 +41,7 @@ public class Solution {
         int endPtr = 0;
         for (int i = 0; i < n; i++) {
             if (sT[i] < eT[endPtr]) {
-                countß++;
+                count++;
             } else {
                 endPtr++;
             }
